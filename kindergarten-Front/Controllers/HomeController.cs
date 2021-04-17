@@ -6,6 +6,8 @@ using System.Web.Mvc;
 
 namespace kindergarten_Front.Controllers
 {
+
+
     public class HomeController : Controller
     {
         public ActionResult Index()
