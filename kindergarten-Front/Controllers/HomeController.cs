@@ -11,8 +11,6 @@ namespace kindergarten_Front.Controllers
         public ActionResult Index()
         {
             return View();
-
-
         }
 
         public ActionResult About()
