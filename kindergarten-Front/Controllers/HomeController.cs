@@ -37,7 +37,9 @@ namespace kindergarten_Front.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
-            return View();
+            return View();   
+
+
         }
     }
 }
