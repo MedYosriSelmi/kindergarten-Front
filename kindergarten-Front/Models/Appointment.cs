@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Kiindergarten.Models
+namespace kindergarten_Front.Models
 {
     public class Appointment
     {
@@ -20,5 +20,6 @@ namespace Kiindergarten.Models
 
         public User user { get; set; }
 
+        public User doctor { get; set; }
     }
 }
