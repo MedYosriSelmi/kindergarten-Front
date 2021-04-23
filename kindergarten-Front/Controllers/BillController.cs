@@ -37,6 +37,30 @@ namespace kindergarten_Front.Controllers
 
 
         }
+        public async Task<ActionResult> Indexuser()
+        {
+            var tokenResponse = await httpClient.GetAsync(baseAddress + "getAllBillByUser/1"  );
+            if (tokenResponse.IsSuccessStatusCode)
+            {
+                var publications = await tokenResponse.Content.ReadAsAsync<IEnumerable<Bill>>();
+                return View("~/Views/Bill/Indexuser.cshtml", publications.OrderByDescending(bi => bi.dateOfBill));
+            }
+            else
+            {
+                return View("~/Views/Bill/Indexuser.cshtml", new List<Bill>());
+            }
+
+
+        }
+        public async Task<ActionResult> Details1(int id)
+        {
+            var response = await httpClient.GetAsync(baseAddress + "onebill/" + id);
+            var b = await response.Content.ReadAsAsync<Bill>();
+
+            return View(b);
+
+        }
+
         // GET: Bill/Details/
         public async Task<ActionResult> Details(int id)
         {
@@ -49,7 +73,8 @@ namespace kindergarten_Front.Controllers
         // GET: Bill/Create
         public  ActionResult CreateBill()
         {
-       
+           
+           
             return View();
         }
 
@@ -128,19 +153,38 @@ namespace kindergarten_Front.Controllers
             return View();
         }
         
-               public async Task<ActionResult> imprimer(FormCollection collection)
+               public async Task<ActionResult> imprimer(String a)
 
         {
+            a = "pdf";
            
-            var tokenResponse = await httpClient.GetAsync(baseAddress + "report/"+ collection);
+            var tokenResponse = await httpClient.GetAsync(baseAddress + "report/"+a );
             if (tokenResponse.IsSuccessStatusCode)
             {
-                var publications = await tokenResponse.Content.ReadAsAsync<Bill>();
-                return View("~/Views/Bill/getbill.cshtml");
+              
+                return View("~/Views/Bill/pdf.cshtml");
             }
             else
             {
                 return View("~/Views/Bill/getbill.cshtml", new List<Bill>());
+            }
+
+
+        }
+        public async Task<ActionResult> imprimerforuser(String a )
+
+        {
+            a = "pdf";
+
+            var tokenResponse = await httpClient.GetAsync(baseAddress + "reportForUser/1/" + a);
+            if (tokenResponse.IsSuccessStatusCode)
+            {
+
+                return View("~/Views/Bill/pdf.cshtml");
+            }
+            else
+            {
+                return View("~/Views/Bill/Indexuser.cshtml", new List<Bill>());
             }
 
 

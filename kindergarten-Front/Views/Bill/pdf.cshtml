@@ -1,9 +1,7 @@
-﻿@model kindergarten_Front.Models.Bill
-
+﻿
 @{
-    ViewBag.Title = "CreateBill";
+    ViewBag.Title = "pdf";
 }
-
 <!DOCTYPE html>
 @{
     Layout = "";
@@ -446,60 +444,13 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                       
-                    </div>
-                    <h2>CreateBill</h2>
 
 
-                    @using (Html.BeginForm())
-                    {
-                        @Html.AntiForgeryToken()
-
-                        <div class="form-horizontal">
-                            <h4>Bill</h4>
-                            <hr />
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.dateOfBill, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.dateOfBill, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.dateOfBill, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.totalPrice, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.totalPrice, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.totalPrice, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-
-                            <div class="form-group">
-                                <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Create" class="btn btn-facebook" />
-                                </div>
-                            </div>
-                        </div>
-                    }
-
-                    <div>
-                        @Html.ActionLink("Back to List", "Index")
                     </div>
 
-                    @section Scripts {
-                        @Scripts.Render("~/bundles/jqueryval")
-                    }
+                    <h1>pdf</h1>
+                    <h4>report generated in path : C:\Users\souhaib\Documents\workspace-sts-3.8.4.RELEASE\Kindergarten</h4>
+                    @Html.ActionLink("Back to List", "Index")
                     <!-- End of Main Content -->
                     <!-- Footer -->
                     <footer class="sticky-footer bg-white">

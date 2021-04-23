@@ -2118,6 +2118,9 @@
     <Content Include="Views\Appointment\Create.cshtml" />
     <Content Include="Views\Appointment\Edit.cshtml" />
     <Content Include="Views\Appointment\Delete.cshtml" />
+    <Content Include="Views\Bill\Indexuser.cshtml" />
+    <Content Include="Views\Bill\Details1.cshtml" />
+    <Content Include="Views\Bill\pdf.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

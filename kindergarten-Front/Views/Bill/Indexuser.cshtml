@@ -1,0 +1,59 @@
+﻿@model IEnumerable<kindergarten_Front.Models.Bill>
+
+@{
+    ViewBag.Title = "Indexuser";
+}
+
+<h2>Indexuser</h2>
+
+
+<p>
+    @Html.ActionLink("Imprimer", "imprimerforuser")
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dateOfBill)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.totalPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.user)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.kindergarten)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.description)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.dateOfBill)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.totalPrice)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.user.firstName)  @Html.DisplayFor(modelItem => item.user.lastName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.kindergarten.name)
+    </td>
+    <td>
+        
+        @Html.ActionLink("Details", "Details1", new { id = item.id }) |
+       
+    </td>
+</tr>
+}
+
+</table>
