@@ -7,7 +7,7 @@ using System.Web.Mvc;
 namespace kindergarten_Front.Controllers
 {
     public class SubjectController : Controller
-    {        
+    {            
         // GET: Subject
         public ActionResult Index()
         {
