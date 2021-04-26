@@ -1,23 +1,49 @@
-﻿using System;
+﻿using kindergarten_Front.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
+using System.Threading.Tasks;
+using System.IO;
+using Newtonsoft.Json;
+using System.Text;
 
 namespace kindergarten_Front.Controllers
 {
     public class SubjectController : Controller
-    {                 
-        // GET: Subject
-        public ActionResult Index()
+    {
+
+        HttpClient httpClient;
+        string baseAddress = "http://localhost:8081/SpringMVC/servlet/";
+        public SubjectController()
         {
-            return View();
+            httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri(baseAddress);
+
+        }
+        // GET: Subject
+        public async Task<ActionResult> Index()
+        {
+            var tokenResponse = await httpClient.GetAsync(baseAddress + "getAllSubjects");
+            if (tokenResponse.IsSuccessStatusCode)
+            {
+                var app = await tokenResponse.Content.ReadAsAsync<IEnumerable<Subject>>();
+                return View("~/Views/Subject/Index.cshtml", app.OrderByDescending(bi => bi.creationDate));
+            }
+            else
+            {
+                return View("~/Views/Subject/Index.cshtml", new List<Subject>());
+            }
         }
 
         // GET: Subject/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int id)
         {
-            return View();
+            var response = await httpClient.GetAsync(baseAddress + "getSubjecBytId/" + id);
+            var a = await response.Content.ReadAsAsync<Subject>();
+            return View(a);
         }
 
         // GET: Subject/Create
@@ -28,57 +54,62 @@ namespace kindergarten_Front.Controllers
 
         // POST: Subject/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public async Task<ActionResult> Create(Subject subject)
         {
-            try
-            {
-                // TODO: Add insert logic here
+            HttpPostedFileBase file = Request.Files[0];
+            byte[] imageSize = new byte[file.ContentLength];
+            file.InputStream.Read(imageSize, 0, (int)file.ContentLength);
+            subject.photo = "hey  " + imageSize.Length;
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            var APIResponse = httpClient.PostAsJsonAsync<Subject>(baseAddress + "addSubjectWithImage", subject);
+
+
+            return View();
+
+
         }
 
         // GET: Subject/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+
+            var response = await httpClient.GetAsync(baseAddress + "getSubjecBytId/" + id);
+            var a = await response.Content.ReadAsAsync<Subject>();
+            return View(a);
         }
 
         // POST: Subject/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public async Task<ActionResult> Edit(int id, Subject bi)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
+                var APIResponse = await httpClient.PutAsJsonAsync<Subject>(baseAddress + "updateSubject/" + id, bi);
 
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Subject/Delete/5
-        public ActionResult Delete(int id)
-        {
             return View();
         }
 
-        // POST: Subject/Delete/5
+        // GET: Subject/Delete/5
+        public async Task<ActionResult> Delete(int id)
+        {
+            var response = await httpClient.GetAsync(baseAddress + "getSubjecBytId/" + id);
+            var a = await response.Content.ReadAsAsync<Subject>();
+            return View(a);
+        }
+
+        // POST: Appointment/Delete/
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public async Task<ActionResult> Delete(int id, FormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
+
+                var APIResponse = await httpClient.DeleteAsync(baseAddress + "deleteSubjectById/" + id);
 
                 return RedirectToAction("Index");
+
             }
             catch
             {
