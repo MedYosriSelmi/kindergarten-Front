@@ -6,10 +6,10 @@ using System.Web;
 
 namespace kindergarten_Front.Models
 {
-    public class Role
+    public class LoginRequest
     {
-        [Key]
-        public int id { get; set; }
-        public string name { get; set; }
+        public string username { get; set; }
+        [DataType(DataType.Password)]
+        public string password { get; set; }
     }
 }

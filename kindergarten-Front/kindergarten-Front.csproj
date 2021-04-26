@@ -49,6 +49,9 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -120,7 +123,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ChildController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -137,6 +142,7 @@
     <Compile Include="Models\LikesPub.cs" />
     <Compile Include="Models\LikesSub.cs" />
     <Compile Include="Models\ListParticipants.cs" />
+    <Compile Include="Models\LoginRequest.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Planning.cs" />
     <Compile Include="Models\Publication.cs" />
@@ -2103,6 +2109,16 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\dash.cshtml" />
     <Content Include="Views\Home\Front.cshtml" />
+    <Content Include="Views\Child\Index.cshtml" />
+    <Content Include="Views\Child\Create.cshtml" />
+    <Content Include="Views\Child\Delete.cshtml" />
+    <Content Include="Views\Child\Edit.cshtml" />
+    <Content Include="Views\User\SignUp.cshtml" />
+    <Content Include="Views\User\SignIn.cshtml" />
+    <Content Include="Views\Child\Details.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
+    <Content Include="Views\User\login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

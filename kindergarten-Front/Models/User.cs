@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Kiindergarten.Models
+namespace kindergarten_Front.Models
 {
     public class User
     {
@@ -13,6 +13,7 @@ namespace Kiindergarten.Models
         public string username { get; set; }
         public string email { get; set; }
         public bool active { get; set; }
+        [DataType(DataType.Password)]
         public string password { get; set; }
        
         public ICollection<Role> roles { get; set; }
@@ -32,6 +33,7 @@ namespace Kiindergarten.Models
         public ICollection<Activity> list_act { get; set; }
         public ICollection<Planning> list_plan { get; set; }
 
+        ///public virtual ICollection<ConfirmationToken> confirmationtoken { get; set; }
 
         public string firstName { get; set; }
         public string lastName { get; set; }
@@ -39,5 +41,10 @@ namespace Kiindergarten.Models
         [DataType(DataType.Date)]
         // [DisplayFormat(DataFormatString="{0:yyyy-MM-dd}", ApplyFormatInEditMode=true)]  
         public DateTime dateOfBirth { get; set; }
+
+        public User ()
+        {
+
+        }
     }
 }
