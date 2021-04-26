@@ -2121,6 +2121,11 @@
     <Content Include="Views\Bill\Indexuser.cshtml" />
     <Content Include="Views\Bill\Details1.cshtml" />
     <Content Include="Views\Bill\pdf.cshtml" />
+    <Content Include="Views\Appointment\Index2.cshtml" />
+    <Content Include="Views\Appointment\Edit2.cshtml" />
+    <Content Include="Views\Appointment\Accept.cshtml" />
+    <Content Include="Views\Appointment\Refus.cshtml" />
+    <Content Include="Views\Appointment\Details2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

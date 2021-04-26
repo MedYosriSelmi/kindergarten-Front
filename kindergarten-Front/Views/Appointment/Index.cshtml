@@ -154,8 +154,9 @@
             </div>
         </div>
     </div>
-    
+
     <br>
+  
     <p>
         <i class=" d-none d-sm-inline-block btn btn-warning  shadow-sm">
             @Html.ActionLink("Create New", "Create")
@@ -189,7 +190,7 @@
 
         @foreach (var item in Model)
         {
-            <tr>
+            <tr >
                 <td>
                     @Html.DisplayFor(modelItem => item.date)
                 </td>
@@ -221,7 +222,7 @@
                     <i class=" d-none d-sm-inline-block btn btn-outline-danger  shadow-sm">
                         @Html.ActionLink("Delete", "Delete", new { id = item.id, idu = item.user.id })
                     </i>
-</td>
+                </td>
             </tr>
         }
 

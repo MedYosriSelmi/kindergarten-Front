@@ -22,7 +22,7 @@ namespace kindergarten_Front.Controllers
         // GET: Appointment
         public async Task<ActionResult> Index()
         {
-            var tokenResponse = await httpClient.GetAsync(baseAddress + "listofAppointment");
+            var tokenResponse = await httpClient.GetAsync(baseAddress + "findParentAppointment/1");
             if (tokenResponse.IsSuccessStatusCode)
             {
                 var app = await tokenResponse.Content.ReadAsAsync<IEnumerable<Appointment>>();
@@ -114,5 +114,87 @@ namespace kindergarten_Front.Controllers
             }
         }
 
+        public async Task<ActionResult> Index2()
+        {
+            var tokenResponse = await httpClient.GetAsync(baseAddress + "getallappointment_status_1/4");
+            if (tokenResponse.IsSuccessStatusCode)
+            {
+                var app = await tokenResponse.Content.ReadAsAsync<IEnumerable<Appointment>>();
+                return View("~/Views/Appointment/Index2.cshtml", app.OrderByDescending(bi => bi.date));
+            }
+            else
+            {
+                return View("~/Views/Appointment/Index2.cshtml", new List<Appointment>());
+            }
+
+        }
+        // GET: Appointment/Edit/5
+        public async Task<ActionResult> Edit2(int id)
+        {
+            var response = await httpClient.GetAsync(baseAddress + "oneapp/" + id);
+            var a = await response.Content.ReadAsAsync<Appointment>();
+            return View(a);
+        }
+
+
+
+
+        // POST: Appointment/Edit/5
+        [HttpPost]
+        public async Task<ActionResult> Edit2(int id, int idj, Appointment bi)
+        {
+            if (ModelState.IsValid)
+            {
+                var APIResponse = await httpClient.PutAsJsonAsync<Appointment>(baseAddress + "update_appointment_By_Doctor/" + idj + "/" + id, bi);
+
+                return RedirectToAction("Index2");
+            }
+            return View();
+        }
+        public ActionResult Accept()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Accept(int id,int idjj, Appointment bi)
+        {
+          
+            if (ModelState.IsValid)
+            {
+                var APIResponse = await httpClient.PutAsJsonAsync<Appointment>(baseAddress + "accepte_appointment/" + idjj + "/" + id, bi);
+
+                return RedirectToAction("Index2");
+            }
+            return View();
+        }
+        public ActionResult Refus()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Refus(int id, int idjj, Appointment bi)
+        {
+
+            if (ModelState.IsValid)
+            {
+                var APIResponse = await httpClient.PostAsJsonAsync<Appointment>(baseAddress + "refut_appointment/" + idjj + "/" + id, bi);
+
+                return RedirectToAction("Index2");
+            }
+            return View();
+        }
+        // GET: Appointment/Details/
+        public async Task<ActionResult> Details2(int id)
+        {
+            var response = await httpClient.GetAsync(baseAddress + "oneapp/" + id);
+            var a = await response.Content.ReadAsAsync<Appointment>();
+
+            return View(a);
+
+        }
     }
 }

@@ -1,4 +1,7 @@
-﻿@{
+﻿@model kindergarten_Front.Models.Appointment
+
+
+@{
     Layout = null;
 }
 <!DOCTYPE html>
@@ -117,7 +120,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Bill:</h6>
                         <a class="collapse-item" href="~/Bill/">Bills</a>
-                        <a class="collapse-item" href="~/Appointment/Index2">Appointemnts</a>
+                        <a class="collapse-item" href="utilities-border.html">Appointemnts</a>
                     </div>
                 </div>
             </li>
@@ -442,16 +445,55 @@
                 </nav>
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
 
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="~/Bill/imprimer" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                            <i class="fas fa-download fa-sm text-white-50"></i> imprimer
-                        </a>
-                    </div>
+                <h2>Details2</h2>
+
+                <div>
+
+                    <hr />
+                    <dl class="dl-horizontal">
+                        <div>
+                        </div>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.date) :  @Html.DisplayFor(model => model.date)
+                        </dt>
+
+
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.description) :  @Html.DisplayFor(model => model.description)
+                        </dt>
+
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.status) :  @Html.DisplayFor(model => model.status)
+                        </dt>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.beginhour) : @Html.DisplayFor(model => model.beginhour)
+                        </dt>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.endhour) :  @Html.DisplayFor(model => model.endhour)
+                        </dt>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.user) :  @Html.DisplayFor(model => model.user.firstName) @Html.DisplayFor(model => model.user.lastName)
+                        </dt>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.doctor) :  @Html.DisplayFor(model => model.doctor.firstName) @Html.DisplayFor(model => model.doctor.lastName)
+                        </dt>
+
+
+                    </dl>
                 </div>
+                <p>
+                    @Html.ActionLink("Edit", "Edit2", new { id = Model.id }) |
+                    @Html.ActionLink("Back to List", "Index2")
+                </p>
+
+                </table>
                 <!-- End of Main Content -->
                 <!-- Footer -->
                 <footer class="sticky-footer bg-white">
@@ -462,10 +504,8 @@
                     </div>
                 </footer>
                 <!-- End of Footer -->
-
             </div>
             <!-- End of Content Wrapper -->
-
         </div>
         <!-- End of Page Wrapper -->
         <!-- Scroll to Top Button-->

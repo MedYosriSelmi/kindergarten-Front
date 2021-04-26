@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<kindergarten_Front.Models.Appointment>
+@{
     Layout = null;
 }
 <!DOCTYPE html>
@@ -117,7 +118,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Bill:</h6>
                         <a class="collapse-item" href="~/Bill/">Bills</a>
-                        <a class="collapse-item" href="~/Appointment/Index2">Appointemnts</a>
+                        <a class="collapse-item" href="utilities-border.html">Appointemnts</a>
                     </div>
                 </div>
             </li>
@@ -442,16 +443,78 @@
                 </nav>
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
+                
 
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="~/Bill/imprimer" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                            <i class="fas fa-download fa-sm text-white-50"></i> imprimer
-                        </a>
-                    </div>
-                </div>
+                <table class="table" >
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.date)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.description)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.status)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.beginhour)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.endhour)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.user)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.doctor)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr id="souhaib">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.date)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.description)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.status)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.beginhour)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.endhour)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.user.firstName)  @Html.DisplayFor(modelItem => item.user.lastName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.doctor.firstName)  @Html.DisplayFor(modelItem => item.doctor.lastName)
+                            </td>
+                            <td>
+                                
+                                <i class=" d-none d-sm-inline-block btn btn-outline-secondary  shadow-sm">
+
+                                    @Html.ActionLink("Accept", "Accept", new { id = item.id, idjj = item.doctor.id })
+                                </i>
+                                <i class=" d-none d-sm-inline-block btn btn-outline-success  shadow-sm">
+                                    @Html.ActionLink("Edit", "Edit2", new { id = item.id, idj = item.doctor.id })
+                                </i>
+                                <i class=" d-none d-sm-inline-block btn btn-outline-secondary  shadow-sm">
+                                    @Html.ActionLink("Details", "Details2", new { id = item.id })
+                                </i>
+                                <i class=" d-none d-sm-inline-block btn btn-outline-danger  shadow-sm">
+                                    @Html.ActionLink("Refus", "Refus", new { id = item.id, idjj = item.doctor.id })
+                                </i>
+                            </td>
+                        </tr>
+                    }
+
+                </table>
                 <!-- End of Main Content -->
                 <!-- Footer -->
                 <footer class="sticky-footer bg-white">
