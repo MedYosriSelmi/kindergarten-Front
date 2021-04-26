@@ -1,4 +1,4 @@
-﻿using kindergarten_Front.Models;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json;
 using System.Text;
+using Kiindergarten.Models;
 
 namespace kindergarten_Front.Controllers
 {
@@ -56,12 +57,7 @@ namespace kindergarten_Front.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(Subject subject)
         {
-            HttpPostedFileBase file = Request.Files[0];
-            byte[] imageSize = new byte[file.ContentLength];
-            file.InputStream.Read(imageSize, 0, (int)file.ContentLength);
-            subject.photo = "hey  " + imageSize.Length;
-
-            var APIResponse = httpClient.PostAsJsonAsync<Subject>(baseAddress + "addSubjectWithImage", subject);
+            var APIResponse = await httpClient.PostAsJsonAsync<Subject>(baseAddress + "addSubjectWithImage", subject);
 
 
             return View();
