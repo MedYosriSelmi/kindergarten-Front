@@ -57,8 +57,9 @@ namespace kindergarten_Front.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(Subject subject)
         {
-            var APIResponse = await httpClient.PostAsJsonAsync<Subject>(baseAddress + "addSubjectWithImage", subject);
-
+            var APIResponse = await httpClient.PostAsJsonAsync<Subject>(baseAddress +
+                    "addSubjectWithImage?description=" + subject.description + "&name="
+                    + subject.name + "&userId=" + subject.user.id , subject);
 
             return View();
 
@@ -76,11 +77,13 @@ namespace kindergarten_Front.Controllers
 
         // POST: Subject/Edit/5
         [HttpPost]
-        public async Task<ActionResult> Edit(int id, Subject bi)
+        public async Task<ActionResult> Edit(int id, Subject subject)
         {
             if (ModelState.IsValid)
             {
-                var APIResponse = await httpClient.PutAsJsonAsync<Subject>(baseAddress + "updateSubject/" + id, bi);
+                var APIResponse = await httpClient.PutAsJsonAsync<Subject>(baseAddress +
+                    "updateSubject/"+ id +"?description=" + subject.description + "&name="
+                    + subject.name, subject);
 
                 return RedirectToAction("Index");
             }
