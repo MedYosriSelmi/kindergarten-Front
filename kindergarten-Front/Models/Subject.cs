@@ -18,7 +18,7 @@ namespace Kiindergarten.Models
         public DateTime lastUpdateDate { get; set; }
         public string name { get; set; }
         public string description { get; set; }
-        public bool isApproved { get; set; }
+        public Boolean isApproved { get; set; }
         public User user { get; set; }
         public Kindergarten kindergarten { get; set; }
 

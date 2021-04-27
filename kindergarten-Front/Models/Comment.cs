@@ -10,12 +10,19 @@ namespace Kiindergarten.Models
     {
         [Key]
         public int id { get; set; }
+
         public string description { get; set; }
+        
         [DataType(DataType.Date)]
         // [DisplayFormat(DataFormatString="{0:yyyy-MM-dd}", ApplyFormatInEditMode=true)]  
-        public DateTime DateLikeSub { get; set; }
+        public DateTime creationDate { get; set; }
+
+        [DataType(DataType.Date)]
+        // [DisplayFormat(DataFormatString="{0:yyyy-MM-dd}", ApplyFormatInEditMode=true)]  
+        public DateTime lastUpdateDate { get; set; }
 
         public Subject subject { get; set; }
+
         public User user { get; set; }
 
         public Comment comment { get; set; }

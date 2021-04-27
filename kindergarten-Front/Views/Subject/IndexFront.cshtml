@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Kiindergarten.Models.Subject>
+
+@{
+    ViewBag.Title = "IndexFront";
+}
+
+
+
+
+<table class="table">
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.description)
+            </th>
+
+            <th></th>
+        </tr>
+
+
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+
+
+        </tr>
+    }
+
+</table>

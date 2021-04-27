@@ -4,8 +4,8 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
+<h1>Not Approved Subjects</h1>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -26,27 +26,47 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.creationDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.lastUpdateDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.description)
-        </td>
-        
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.creationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lastUpdateDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Approve", "Approve", new { id = item.id }) |
+
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+        </tr>
+
+
+    }
+
 
 </table>
+<input type="number" value="userId" id="IP" name="IP" />
+<button type="submit" id="button"> Get all subjects for this user</button>
+
+@section Scripts {
+    <script type="text/javascript">
+        $("#button").click(function () {
+            var txtVal = $("#IP").val();
+            window.location.href = "getSubjectsByUserId/" + txtVal;
+        });
+
+    </script>
+    }

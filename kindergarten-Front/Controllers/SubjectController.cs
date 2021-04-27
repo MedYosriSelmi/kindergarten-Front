@@ -27,7 +27,22 @@ namespace kindergarten_Front.Controllers
         // GET: Subject
         public async Task<ActionResult> Index()
         {
-            var tokenResponse = await httpClient.GetAsync(baseAddress + "getAllSubjects");
+            var tokenResponse = await httpClient.GetAsync(baseAddress + "getAllNotApprovedSubjects");
+            if (tokenResponse.IsSuccessStatusCode)
+            {
+                var app = await tokenResponse.Content.ReadAsAsync<IEnumerable<Subject>>();
+                return View("~/Views/Subject/Index.cshtml", app.OrderByDescending(bi => bi.creationDate));
+            }
+            else
+            {
+                return View("~/Views/Subject/Index.cshtml", new List<Subject>());
+            }
+        }
+
+        // GET: Subject
+        public async Task<ActionResult> IndexFront()
+        {
+            var tokenResponse = await httpClient.GetAsync(baseAddress + "getAllApprovedSubjects");
             if (tokenResponse.IsSuccessStatusCode)
             {
                 var app = await tokenResponse.Content.ReadAsAsync<IEnumerable<Subject>>();
@@ -42,9 +57,24 @@ namespace kindergarten_Front.Controllers
         // GET: Subject/Details/5
         public async Task<ActionResult> Details(int id)
         {
-            var response = await httpClient.GetAsync(baseAddress + "getSubjecBytId/" + id);
+            var response = await httpClient.GetAsync(baseAddress + "getSubjectById/" + id);
             var a = await response.Content.ReadAsAsync<Subject>();
             return View(a);
+        }
+
+        // GET: Subject/GetSubjectByUserId/5
+        public async Task<ActionResult> getSubjectsByUserId(int id)
+        {
+            var tokenResponse = await httpClient.GetAsync(baseAddress + "getSubjectsByUserId/" + id);
+            if (tokenResponse.IsSuccessStatusCode)
+            {
+                var app = await tokenResponse.Content.ReadAsAsync<IEnumerable<Subject>>();
+                return View("~/Views/Subject/getSubjectByUserId.cshtml", app.OrderByDescending(bi => bi.creationDate));
+            }
+            else
+            {
+                return View("~/Views/Subject/getSubjectByUserId.cshtml", new List<Subject>());
+            }
         }
 
         // GET: Subject/Create
@@ -61,7 +91,7 @@ namespace kindergarten_Front.Controllers
                     "addSubjectWithImage?description=" + subject.description + "&name="
                     + subject.name + "&userId=" + subject.user.id , subject);
 
-            return View();
+            return RedirectToAction("Index");
 
 
         }
@@ -89,6 +119,31 @@ namespace kindergarten_Front.Controllers
             }
             return View();
         }
+
+        // GET: Subject/Edit/5
+        public async Task<ActionResult> Approve(int id)
+        {
+
+            var response = await httpClient.GetAsync(baseAddress + "getSubjecBytId/" + id);
+            var a = await response.Content.ReadAsAsync<Subject>();
+            return View(a);
+        }
+
+        // POST: Subject/Edit/5
+        [HttpPost]
+        public async Task<ActionResult> Approve(int id, Subject subject)
+        {
+            if (ModelState.IsValid)
+            {
+                subject.isApproved = true;
+                var APIResponse = await httpClient.PutAsJsonAsync<Subject>(baseAddress +
+                    "approveSubject/" + id, subject);
+
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
 
         // GET: Subject/Delete/5
         public async Task<ActionResult> Delete(int id)

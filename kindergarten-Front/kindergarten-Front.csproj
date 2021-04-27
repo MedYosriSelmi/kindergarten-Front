@@ -136,7 +136,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LikesSubController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\SubjectController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2125,6 +2128,19 @@
     <Content Include="Views\Subject\Create.cshtml" />
     <Content Include="Views\Subject\Edit.cshtml" />
     <Content Include="Views\Subject\Delete.cshtml" />
+    <Content Include="Views\Subject\Approve.cshtml" />
+    <Content Include="Views\Subject\IndexFront.cshtml" />
+    <Content Include="Views\Subject\getSubjectByUserId.cshtml" />
+    <Content Include="Views\Comment\Parent.cshtml" />
+    <Content Include="Views\Comment\Child.cshtml" />
+    <Content Include="Views\Comment\AddParentComment.cshtml" />
+    <Content Include="Views\Comment\AddChildComment.cshtml" />
+    <Content Include="Views\Comment\Delete.cshtml" />
+    <Content Include="Views\Comment\Edit.cshtml" />
+    <Content Include="Views\LikesSub\Delete.cshtml" />
+    <Content Include="Views\Message\getDiscussion.cshtml" />
+    <Content Include="Views\Message\Edit.cshtml" />
+    <Content Include="Views\Message\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
