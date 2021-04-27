@@ -49,12 +49,16 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -121,6 +125,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ReclamationController.cs" />
+    <Compile Include="Controllers\SocialReclamationController.cs" />
+    <Compile Include="Controllers\TechnicalReclamationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -129,6 +136,7 @@
     <Compile Include="Models\Bill.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Child.cs" />
+    <Compile Include="Models\FilterRec.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\ConfirmationToken.cs" />
     <Compile Include="Models\ERole.cs" />
@@ -2103,9 +2111,26 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\dash.cshtml" />
     <Content Include="Views\Home\Front.cshtml" />
+    <Content Include="Views\ReclamationViews\ListReclamationsBack.cshtml" />
+    <Content Include="Views\Reclamation\Index.cshtml" />
+    <Content Include="Views\Reclamation\GetReclamationsById.cshtml" />
+    <Content Include="Views\Reclamation\CreateSocial.cshtml" />
+    <Content Include="Views\Reclamation\Delete.cshtml" />
+    <Content Include="Views\Reclamation\CreateTechnical.cshtml" />
+    <Content Include="Views\Reclamation\EditRec.cshtml" />
+    <Content Include="Views\TechnicalReclamation\Index.cshtml" />
+    <Content Include="Views\SocialReclamation\Index.cshtml" />
+    <Content Include="Views\TechnicalReclamation\Edit.cshtml" />
+    <Content Include="Views\SocialReclamation\Edit.cshtml" />
+    <Content Include="Views\TechnicalReclamation\Search.cshtml" />
+    <Content Include="Views\SocialReclamation\FilterReclamation.cshtml" />
+    <Content Include="Views\Reclamation\Edit.cshtml" />
+    <Content Include="Views\SocialReclamation\Details.cshtml" />
+    <Content Include="Views\TechnicalReclamation\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Media\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -2119,6 +2144,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

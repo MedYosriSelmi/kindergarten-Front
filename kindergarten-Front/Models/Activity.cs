@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 
-namespace Kiindergarten.Models
+namespace kindergarten_Front.Models
 {
     public class Activity
     {
