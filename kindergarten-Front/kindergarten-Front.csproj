@@ -49,6 +49,9 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -121,6 +124,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KindergartenController.cs" />
+    <Compile Include="Controllers\PlanningController.cs" />
+    <Compile Include="Controllers\PublicationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2103,6 +2109,13 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\dash.cshtml" />
     <Content Include="Views\Home\Front.cshtml" />
+    <Content Include="Views\Kindergarten\Index.cshtml" />
+    <Content Include="Views\Planning\Index.cshtml" />
+    <Content Include="Views\Publication\Index.cshtml" />
+    <Content Include="Views\Kindergarten\DeleteKindergarten.cshtml" />
+    <Content Include="Views\Planning\DeletePlanning.cshtml" />
+    <Content Include="Views\Publication\DeletePub.cshtml" />
+    <Content Include="Views\Kindergarten\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

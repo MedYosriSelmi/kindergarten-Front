@@ -4,10 +4,11 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Kiindergarten.Models
+namespace kindergarten_Front.Models
 {
     public class Kindergarten
     {
+
         [Key]
         public int id { get; set; }
         public string name { get; set; }
@@ -25,5 +26,6 @@ namespace Kiindergarten.Models
         public ICollection<Activity> list_act { get; set; }
         public ICollection<Reclamation> list_reclams { get; set; }
         public ICollection<Publication> list_pub { get; set; }
+
     }
 }
