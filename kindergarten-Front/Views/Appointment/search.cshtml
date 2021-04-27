@@ -1,0 +1,29 @@
+﻿@model kindergarten_Front.Models.Appointment
+<h2>search</h2>
+@using (Html.BeginForm())
+{
+<table>
+    <tr>
+        <td>
+            <div>
+                Search: @Html.TextBox("Search")
+            </div>
+        </td>
+    <tr id="Search">
+        <td>
+            <text id="Search"> </text>
+        </td>
+    </tr>
+    <i class=" d-none d-sm-inline-block btn btn-outline-secondary  shadow-sm">
+
+        @Html.ActionLink("Search", "Search")
+    </i>
+
+    
+
+
+</table>
+}
+
+
+

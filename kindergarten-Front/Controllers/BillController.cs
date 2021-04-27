@@ -24,7 +24,7 @@ namespace kindergarten_Front.Controllers
         // GET: Bill
         public async Task<ActionResult> Index()
         {
-            var tokenResponse = await httpClient.GetAsync(baseAddress + "listofbill");
+            var tokenResponse = await httpClient.GetAsync(baseAddress + "getAllBillBykinder/1");
             if (tokenResponse.IsSuccessStatusCode)
             {
                 var publications = await tokenResponse.Content.ReadAsAsync<IEnumerable<Bill>>();
@@ -153,12 +153,12 @@ namespace kindergarten_Front.Controllers
             return View();
         }
         
-               public async Task<ActionResult> imprimer(String a)
+               public async Task<ActionResult> imprimer( String a)
 
         {
             a = "pdf";
            
-            var tokenResponse = await httpClient.GetAsync(baseAddress + "report/"+a );
+            var tokenResponse = await httpClient.GetAsync(baseAddress + "exportReportForKinder/1/" + a );
             if (tokenResponse.IsSuccessStatusCode)
             {
               
@@ -180,7 +180,7 @@ namespace kindergarten_Front.Controllers
             if (tokenResponse.IsSuccessStatusCode)
             {
 
-                return View("~/Views/Bill/pdf.cshtml");
+                return View("~/Views/Bill/pdf2.cshtml");
             }
             else
             {

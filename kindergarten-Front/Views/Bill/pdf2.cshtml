@@ -1,9 +1,7 @@
-﻿@model kindergarten_Front.Models.Bill
-
+﻿
 @{
-    ViewBag.Title = "Details1";
+    ViewBag.Title = "pdf2";
 }
-
 @{
     Layout = null;
 }
@@ -152,7 +150,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb ">
                         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Bill</li>
+                        <li class="breadcrumb-item active" aria-current="page">appointments</li>
                     </ol>
                 </nav>
             </div>
@@ -161,39 +159,15 @@
 
     <br>
 
-    <h2>Details</h2>
 
-    <div>
-        
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.description) :  @Html.DisplayFor(model => model.description)
-            </dt>
+    
 
-            <dt>
-                @Html.DisplayNameFor(model => model.dateOfBill) :  @Html.DisplayFor(model => model.dateOfBill)
-            </dt>
+    <h1>pdf</h1>
+    <h4>report generated in path : C:\Users\souhaib\Documents\workspace-sts-3.8.4.RELEASE\Kindergarten</h4>
+    @Html.ActionLink("Back to List", "Indexuser")
 
 
 
-            <dt>
-                @Html.DisplayNameFor(model => model.totalPrice) : @Html.DisplayFor(model => model.totalPrice)
-            </dt>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.user) : @Html.DisplayFor(model => model.user.firstName) @Html.DisplayFor(model => model.user.lastName)
-            </dt>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.kindergarten) : @Html.DisplayFor(model => model.kindergarten.name)
-            </dt>
-        </dl>
-    </div>
-    <p>
-
-        @Html.ActionLink("Back to List", "Indexuser")
-    </p>
     <div class="section bg-tertiary">
         <div class="content-wrap py-5">
             <div class="container">

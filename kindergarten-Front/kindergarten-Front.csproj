@@ -2126,6 +2126,8 @@
     <Content Include="Views\Appointment\Accept.cshtml" />
     <Content Include="Views\Appointment\Refus.cshtml" />
     <Content Include="Views\Appointment\Details2.cshtml" />
+    <Content Include="Views\Appointment\search.cshtml" />
+    <Content Include="Views\Bill\pdf2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

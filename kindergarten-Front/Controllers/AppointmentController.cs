@@ -158,12 +158,12 @@ namespace kindergarten_Front.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Accept(int id,int idjj, Appointment bi)
+        public async Task<ActionResult> Accept(int id, int idjj, Appointment bi)
         {
-          
+
             if (ModelState.IsValid)
             {
-                var APIResponse = await httpClient.PutAsJsonAsync<Appointment>(baseAddress + "accepte_appointment/" + idjj + "/" + id, bi);
+                var APIResponse = await httpClient.PostAsJsonAsync<Appointment>(baseAddress + "accepte_appointment/" + id + "/" + idjj, bi);
 
                 return RedirectToAction("Index2");
             }
@@ -195,6 +195,14 @@ namespace kindergarten_Front.Controllers
 
             return View(a);
 
+        }
+        public async Task<ActionResult> search( String search)
+        {
+            
+            
+            var response = await httpClient.GetAsync(baseAddress + "lister_date_disponible_byDoctor/1/4" + search);
+            var a = await response.Content.ReadAsAsync<Appointment>();
+            return View(a);
         }
     }
 }
