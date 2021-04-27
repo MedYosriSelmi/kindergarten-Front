@@ -21,8 +21,8 @@ namespace kindergarten_Front.Models
         [DataType(DataType.DateTime)]
         // [DisplayFormat(DataFormatString="{0:yyyy-MM-dd}", ApplyFormatInEditMode=true)]  
         public DateTime confirmedAt { get; set; }
-        [ForeignKey("user_id")]
-        public virtual User user { get; set; }
+      
+        public virtual int user_id { get; set; }
         //public int id { get; set; }
 
         //public string Token { get; set; }

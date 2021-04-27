@@ -1,11 +1,14 @@
 ﻿
 using kindergarten_Front.Models;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -27,17 +30,22 @@ namespace kindergarten_Front.Controllers
         // GET: User
         public async Task<ActionResult> Index()
         {
-            var tokenResponse = await httpClient.GetAsync(baseAddress + "getAllUsers");
-            if (tokenResponse.IsSuccessStatusCode)
+            using (var client = new HttpClient())
             {
-                var users = await tokenResponse.Content.ReadAsAsync<IEnumerable<User>>();
-                return View(users.OrderByDescending(c => c.dateOfBirth));
-            }
-            else
-            {
-                return View(new List<User>());
-            }
+                var _AccessToken = System.Web.HttpContext.Current.Session["access_token"];
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", (string)_AccessToken);
 
+                var tokenResponse = await httpClient.GetAsync(baseAddress + "getAllUsers");
+                if (tokenResponse.IsSuccessStatusCode)
+                {
+                    var users = await tokenResponse.Content.ReadAsAsync<IEnumerable<User>>();
+                    return View(users.OrderByDescending(c => c.dateOfBirth));
+                }
+                else
+                {
+                    return View(new List<User>());
+                }
+            }
         }
 
         // GET: SignUp
@@ -67,10 +75,7 @@ namespace kindergarten_Front.Controllers
 
         }
 
-        //public ActionResult index()
-        //{
-        //    return View();
-        //}
+        
         //[HttpPost]
         //public ActionResult SignUp(User customer)
         //{
@@ -100,7 +105,7 @@ namespace kindergarten_Front.Controllers
 
         }
 
-        
+
 
         public ActionResult login()
 
@@ -131,7 +136,7 @@ namespace kindergarten_Front.Controllers
                         ViewBag.mssg = "incorrct usr";
                     }
 
-                    HttpContext.Session.Add("access_token", myTok); 
+                    HttpContext.Session.Add("access_token", myTok);
                     var _AccessToken = System.Web.HttpContext.Current.Session["access_token"];
 
 
@@ -143,8 +148,10 @@ namespace kindergarten_Front.Controllers
                 }
             }
 
-            return View();
+            return View("login");
         }
+
+
 
     }
 }

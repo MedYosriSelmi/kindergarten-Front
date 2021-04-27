@@ -33,7 +33,7 @@ namespace kindergarten_Front.Models
         public ICollection<Activity> list_act { get; set; }
         public ICollection<Planning> list_plan { get; set; }
 
-        ///public virtual ICollection<ConfirmationToken> confirmationtoken { get; set; }
+        
 
         public string firstName { get; set; }
         public string lastName { get; set; }
