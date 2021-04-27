@@ -11,7 +11,7 @@ namespace kindergarten_Front.Models
         [Key]
         public int id { get; set; }
         [DataType(DataType.Date)]
-        // [DisplayFormat(DataFormatString="{0:yyyy-MM-dd}", ApplyFormatInEditMode=true)]  
+         [DisplayFormat(DataFormatString="{0:yyyy-MM-dd}", ApplyFormatInEditMode=true)]  
         public DateTime date { get; set; }
         public string description { get; set; }
         public int status { get; set; }

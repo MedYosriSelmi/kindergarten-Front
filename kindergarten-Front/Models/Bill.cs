@@ -13,7 +13,7 @@ namespace kindergarten_Front.Models
        
         public string description { get; set; }
         [DataType(DataType.Date)]
-        // [DisplayFormat(DataFormatString="{0:yyyy-MM-dd}", ApplyFormatInEditMode=true)]  
+         [DisplayFormat(DataFormatString="{0:yyyy-MM-dd}", ApplyFormatInEditMode=true)]  
         public DateTime dateOfBill { get; set; }
         public double totalPrice { get; set; }
 

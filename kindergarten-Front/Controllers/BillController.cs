@@ -86,6 +86,7 @@ namespace kindergarten_Front.Controllers
 
             if (ModelState.IsValid)
             {
+                
                 var APIResponse = await httpClient.PostAsJsonAsync<Bill>(baseAddress + "ajout_Bill_To_User/1/1", bi);
                 
                 return RedirectToAction("Index");
