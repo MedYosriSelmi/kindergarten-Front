@@ -1,0 +1,377 @@
+﻿@model IEnumerable<kindergarten_Front.Models.Activity>
+
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from html.rometheme.net/kids/page-events.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 14 Apr 2021 00:14:55 GMT -->
+<head>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CHILDHOOD - Kindergartens and Child Care </title>
+    <meta name="description" content="KIDS is a clean, modern, and fully responsive Html Template. Take your Startup business website to the next level. It is designed for kindergarten, childcare, homeschooling, school, learning, playground businesses or any type of person or business who wants to showcase their work, services and professional way.">
+    <meta name="keywords" content="business, care, childcare, children, clean, corporate, happykids, homeschool, kids, kindergarten, playground, responsive, school, learning">
+    <meta name="author" content="rometheme.net">
+
+    <!-- ==============================================
+    Favicons
+    =============================================== -->
+    <link rel="shortcut icon" href="~/Content/kids/images/logo.png">
+    <link rel="apple-touch-icon" href="~/Content/kids/images/logo.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="~/Content/kids/images/logo.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="~/Content/kids/images/logo.png">
+
+    <!-- ==============================================
+    CSS VENDOR
+    =============================================== -->
+    <link rel="stylesheet" type="text/css" href="~/Content/kids/css/vendor/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/kids/css/vendor/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/kids/css/vendor/owl.carousel.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/kids/css/vendor/owl.theme.default.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/kids/css/vendor/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/kids/css/vendor/animate.min.css">
+
+    <!-- ==============================================
+    Custom Stylesheet
+    =============================================== -->
+    <link rel="stylesheet" type="text/css" href="~/Content/kids/css/style.css" />
+
+    <script src="~/Content/kids/js/vendor/modernizr.min.js"></script>
+
+</head>
+
+<body>
+
+    <!-- LOAD PAGE -->
+    <div class="animationload">
+        <div class="loader"></div>
+    </div>
+
+    <!-- BACK TO TOP SECTION -->
+    <a href="#0" class="cd-top cd-is-visible cd-fade-out">Top</a>
+
+    <!-- HEADER -->
+    <div class="header header-1">
+
+        <!-- TOPBAR -->
+        <div class="topbar">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-sm-8 col-md-6">
+                        <div class="info">
+                            <div class="info-item">
+                                <i class="fa fa-phone"></i> (+216) 70 400 288
+                            </div>
+                            <div class="info-item">
+                                <i class="fa fa-envelope-o"></i> <a href="mailto:support@kids.com" title="">kinder.garten0206@gmail.com</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-md-6">
+                        <div class="sosmed-icon pull-right d-inline-flex">
+                            <a href="#" class="fb"><i class="fa fa-facebook"></i></a>
+                            <a href="#" class="tw"><i class="fa fa-twitter"></i></a>
+                            <a href="#" class="ig"><i class="fa fa-instagram"></i></a>
+                            <a href="#" class="in"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NAVBAR SECTION -->
+        <div class="navbar-main">
+            <div class="container">
+                <nav id="navbar-example" class="navbar navbar-expand-lg">
+                    <a class="navbar-brand" href="~/Content/kids/index.html">
+                        <img src="~/Content/kids/images/logo.png" alt="">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Home/Front">HOME</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="~/Content/kids/about.html">ABOUT US</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="~/Content/kids/classes.html">KINDERGARTENS</a>
+                            </li>
+                            <li class="nav-item dropdown dmenu active">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    ACTIVITIES
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="~/Content/kids/page-gallery.html">GALLERY</a>
+                                    <a class="dropdown-item" href="~/Event/getFrontEvent">EVENTS</a>
+                                    <a class="dropdown-item" href="~/Activity/getactivityFront">ACTIVITIES</a>
+                                </div>
+                            </li>
+                            @*<li class="nav-item dropdown dmenu active">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        PAGES
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="~/Content/kids/page-gallery.html">GALLERY</a>
+                                        <a class="dropdown-item" href="~/Content/kids/page-testimonials.html">TESTIMONIALS</a>
+                                        <a class="dropdown-item" href="~/Content/kids/page-faq.html">FAQ</a>
+                                        <a class="dropdown-item" href="~/Content/kids/page-404.html">404 PAGE</a>
+                                        <a class="dropdown-item" href="~/Content/kids/page-events.html">EVENTS</a>
+                                        <a class="dropdown-item" href="~/Content/kids/page-events-single.html">SINGLE EVENTS</a>
+                                        <a class="dropdown-item" href="~/Content/kids/page-news.html">NEWS</a>
+                                        <a class="dropdown-item" href="~/Content/kids/page-news-single.html">SINGLE NEWS</a>
+                                    </div>
+                                </li>*@
+                            <li class="nav-item">
+                                <a class="nav-link" href="~/Content/kids/contact.html">CONTACT US</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav> <!-- -->
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- BANNER -->
+    <div id="oc-fullslider" class="banner">
+        <div class="owl-carousel owl-theme full-screen">
+            <div class="item">
+                <img src="~/Content/kids/images/gallery-5.jpg" alt="Slider">
+                <div class="overlay-bg"></div>
+                <div class="container d-flex align-items-center">
+                    <div class="wrap-caption">
+                        <h4 class="caption-supheading">SEE OUR</h4>
+                        <h1 class="caption-heading">ALL ACTIVITIES</h1>
+                        <a href="/Activity/getActivityOfToday" class="btn btn-default">Activity of today</a>
+                        <a href="/Activity/getActivitybycategory" class="btn btn-default">Activity by category</a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="~/Content/kids/images/gallery-2.jpg" alt="Slider">
+                <div class="overlay-bg"></div>
+                <div class="container d-flex align-items-center">
+                    <div class="wrap-caption">
+                        <h4 class="caption-supheading">SEE OUR</h4>
+                        <h1 class="caption-heading">ALL ACTIVITIES</h1>
+                        <a href="/Activity/getActivityOfToday" class="btn btn-default">Activity of today</a>
+                        <a href="/Activity/getActivitybycategory" class="btn btn-default">Activity by category</a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="~/Content/kids/images/gallery-1.jpg" alt="Slider">
+                <div class="overlay-bg"></div>
+                <div class="container d-flex align-items-center">
+                    <div class="wrap-caption">
+                        <h4 class="caption-supheading">SEE OUR</h4>
+                        <h1 class="caption-heading">ALL ACTIVITIES </h1>
+                        <a href="/Activity/getActivityOfToday" class="btn btn-default">Activity of today</a>
+                        <a href="/Activity/getActivitybycategory" class="btn btn-default">Activity by category</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="custom-nav owl-nav"></div>
+    </div>
+    <br>
+
+
+
+    <div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#myInput").on("keyup", function () {
+                    var value = $(this).val().toLowerCase();
+                    $("#rihab ").filter(function () {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+        </script>
+        <input class="form-control" id="myInput" type="text" id="navbar-search-input" placeholder="Search for .." aria-label="search" aria-describedby="search" >
+        <br>
+
+    </div>
+
+
+
+    <div class="section">
+        <div class="content-wrap">
+            <div class="container">
+                <div class="row">
+
+                    @foreach (var item in Model)
+                    {
+
+                        <!-- Item 1 -->
+                        <div class="col-sm-12 col-md-6 col-lg-4 mb-5" id="rihab">
+                            <div class="rs-news-1">
+                                <div>
+                                    <p><img src="@Url.Content("~/Content/Upload/" + item.photo)" alt="" class="img-fluid rounded"></p>
+                                </div>
+                                <div class="body-box">
+                                    <div><p>  @Html.DisplayFor(modelItem => item.category) </p></div>
+                                    <div><p>  @Html.DisplayFor(modelItem => item.name) </p></div>
+                                    <div><p>@Html.DisplayFor(modelItem => item.DateOfActivity)</p></div>
+                                    <p> @Html.DisplayFor(modelItem => item.description)</p>
+                                    <div class="text-center">
+                                        <i class="btn btn-primary">
+                                            @Html.ActionLink("SEE MORE", "DetailsFrontactivity", new { id = item.id })
+                                        </i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- CTA -->
+    <div class="section bg-tertiary">
+        <div class="content-wrap py-5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="cta-1">
+                            <div class="body-text mb-3">
+                                <h3 class="my-1 text-secondary">Let's join the best kindergarten now!</h3>
+
+                            </div>
+                            <div class="body-action">
+                                <a href="contact.html" class="btn btn-primary mt-3">CONTACT US</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FOOTER SECTION -->
+    <div class="footer" data-background="~/Content/kids/images/bg.jpg">
+        <div class="content-wrap">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-sm-3 col-md-3">
+                        <div class="footer-item">
+                            <img src="~/Content/kids/images/logo.png" alt="logo bottom" class="logo-bottom">
+                            <div class="spacer-30"></div>
+                            <p>
+                                CHILDHOOD is a web site to  facilitate the communication between
+                                parents and the administrative staff in such establishments which is particularly important.
+                            </p>
+                            <a href="#"><i class="fa fa-angle-right"></i> Read More</a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3 col-md-3">
+                        <div class="footer-item">
+                            <div class="footer-title">
+                                Contact Info
+                            </div>
+                            <ul class="list-info">
+                                <li>
+                                    <div class="info-icon">
+                                        <span class="fa fa-map-marker"></span>
+                                    </div>
+                                    <div class="info-text">Tunisia</div>
+                                </li>
+                                <li>
+                                    <div class="info-icon">
+                                        <span class="fa fa-phone"></span>
+                                    </div>
+                                    <div class="info-text">(+216) 70 400 288 </div>
+                                </li>
+                                <li>
+                                    <div class="info-icon">
+                                        <span class="fa fa-envelope"></span>
+                                    </div>
+                                    <div class="info-text">kinder.garten0206@gmail.com</div>
+                                </li>
+                                <li>
+                                    <div class="info-icon">
+                                        <span class="fa fa-clock-o"></span>
+                                    </div>
+
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3 col-md-3">
+                        <div class="footer-item">
+                            <div class="footer-title">
+                                Useful Links
+                            </div>
+
+                            <ul class="list">
+                                <li><a href="~/Content/kids/about.html" title="About us">About us</a></li>
+                                <li><a href="~/Content/kids/classes.html" title="Our Teacher">Our Kindergartens</a></li>
+                                <li><a href="~/Event/getFrontEvent" title="Our Events">Our Events</a></li>
+                                <li><a href="~/Content/kids/contact.html" title="Contact Us">Contact Us</a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3 col-md-3">
+                        <div class="footer-item">
+                            <div class="footer-title">
+                                Get in Touch
+                            </div>
+
+                            <div class="sosmed-icon d-inline-flex">
+                                <a href="#" class="fb"><i class="fa fa-facebook"></i></a>
+                                <a href="#" class="tw"><i class="fa fa-twitter"></i></a>
+                                <a href="#" class="ig"><i class="fa fa-instagram"></i></a>
+                                <a href="#" class="in"><i class="fa fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="fcopy">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- JS VENDOR -->
+        <script src="~/Content/kids/js/vendor/jquery.min.js"></script>
+        <script src="~/Content/kids/js/vendor/bootstrap.min.js"></script>
+        <script src="~/Content/kids/js/vendor/owl.carousel.js"></script>
+        <script src="~/Content/kids/js/vendor/jquery.magnific-popup.min.js"></script>
+
+        <!-- SENDMAIL -->
+        <script src="~/Content/kids/js/vendor/validator.min.js"></script>
+        <script src="~/Content/kids/js/vendor/form-scripts.js"></script>
+
+        <script src="~/Content/kids/js/script.js"></script>
+
+</body>
+
+<!-- Mirrored from html.rometheme.net/kids/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 14 Apr 2021 00:13:58 GMT -->
+</html>

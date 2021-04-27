@@ -49,6 +49,9 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -120,7 +123,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ActivityController.cs" />
+    <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ListParticipantsController.cs" />
+    <Compile Include="Controllers\RatingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -136,6 +143,7 @@
     <Compile Include="Models\Kindergarten.cs" />
     <Compile Include="Models\LikesPub.cs" />
     <Compile Include="Models\LikesSub.cs" />
+    <Compile Include="Models\ListParticipantsPK.cs" />
     <Compile Include="Models\ListParticipants.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Planning.cs" />
@@ -244,6 +252,7 @@
     <Content Include="Content\kids\page-news.html" />
     <Content Include="Content\kids\page-testimonials.html" />
     <Content Include="Content\kids\teachers.html" />
+    <Content Include="Content\Upload\defaultImage.png" />
     <Content Include="Content\vendor\bootstrap\js\bootstrap.bundle.js" />
     <Content Include="Content\vendor\bootstrap\js\bootstrap.bundle.min.js" />
     <Content Include="Content\vendor\bootstrap\js\bootstrap.js" />
@@ -2103,9 +2112,29 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\dash.cshtml" />
     <Content Include="Views\Home\Front.cshtml" />
+    <Content Include="Views\Event\get.cshtml" />
+    <Content Include="Views\Event\Delete.cshtml" />
+    <Content Include="Views\Activity\getactivity.cshtml" />
+    <Content Include="Views\Activity\Create.cshtml" />
+    <Content Include="Views\Event\Create.cshtml" />
+    <Content Include="Views\Event\Details.cshtml" />
+    <Content Include="Views\Activity\Delete.cshtml" />
+    <Content Include="Views\Activity\Details.cshtml" />
+    <Content Include="Views\Event\getEventOfToday.cshtml" />
+    <Content Include="Views\Event\upload.cshtml" />
+    <Content Include="Views\Event\getFrontEvent.cshtml" />
+    <Content Include="Views\Event\DetailsFront.cshtml" />
+    <Content Include="Views\Activity\getactivityFront.cshtml" />
+    <Content Include="Views\Activity\getActivityOfToday.cshtml" />
+    <Content Include="Views\Activity\DetailsFrontactivity.cshtml" />
+    <Content Include="Views\Activity\getActivitybycategory.cshtml" />
+    <Content Include="Views\Event\Edit.cshtml" />
+    <Content Include="Views\ListParticipants\Index.cshtml" />
+    <Content Include="Views\Activity\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Rating\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

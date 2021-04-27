@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 
-namespace Kiindergarten.Models
+namespace kindergarten_Front.Models
 {
     public class Activity
     {
@@ -14,8 +14,11 @@ namespace Kiindergarten.Models
         public string name { get; set; }
         public string description { get; set; }
         [DataType(DataType.Date)]
-        // [DisplayFormat(DataFormatString="{0:yyyy-MM-dd}", ApplyFormatInEditMode=true)]  
+        [DisplayFormat(DataFormatString="{0:yyyy-MM-dd}", ApplyFormatInEditMode=true)]
+      
+     
         public DateTime? DateOfActivity { get; set; }
+       
         public string photo { get; set; }
 
         public User user { get; set; }
