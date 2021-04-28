@@ -92,6 +92,32 @@ namespace kindergarten_Front.Controllers
             return View(rec);
         }
 
+        public ActionResult Search(string Key)
+        {
+            IEnumerable<Reclamation> reclamation = null;
+            using (var reclam = new HttpClient())
+            {
+                reclam.BaseAddress = new Uri("http://localhost:8081/");
+                var responseTask = reclam.GetAsync("/SpringMVC/servlet/searchSocialReclamation/" + Key.ToString());
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readJob = result.Content.ReadAsAsync<IList<Reclamation>>();
+                    readJob.Wait();
+                    reclamation = readJob.Result;
+                }
+                else
+                {
+                    //return the error
+                    reclamation = Enumerable.Empty<Reclamation>();
+                    ModelState.AddModelError(String.Empty, "error");
+                }
+
+            }
+            return View(reclamation);
+        }
+
         // GET: SocialReclamation/Create
         public ActionResult Create()
         {

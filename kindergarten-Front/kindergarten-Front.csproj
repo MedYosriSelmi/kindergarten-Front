@@ -124,6 +124,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ReclamationController.cs" />
     <Compile Include="Controllers\SocialReclamationController.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="Models\Bill.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Child.cs" />
+    <Compile Include="Models\FileUploadModel.cs" />
     <Compile Include="Models\FilterRec.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\ConfirmationToken.cs" />
@@ -2127,6 +2129,8 @@
     <Content Include="Views\Reclamation\Edit.cshtml" />
     <Content Include="Views\SocialReclamation\Details.cshtml" />
     <Content Include="Views\TechnicalReclamation\Details.cshtml" />
+    <Content Include="Views\SocialReclamation\Search.cshtml" />
+    <Content Include="Views\FileUpload\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

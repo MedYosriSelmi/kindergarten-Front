@@ -7,6 +7,12 @@
 
 <h2>Index</h2>
 
+@using (Html.BeginForm("Search", "SocialReclamation", FormMethod.Get))
+{
+    @Html.TextBox("Key")
+    <input type="submit" value="Search" />
+}
+
 <table class="table">
     <tr>
         <th>
@@ -27,29 +33,30 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.DateOfReclam)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.description)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.status)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.type)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.photo)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-        @Html.ActionLink("Details", "Details", new { id = item.id }) |
-        @Html.ActionLink("Notify", "Notify", new { id = item.id }) |
-    </td>
-</tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfReclam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.photo)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Notify", "Notify", new { id = item.id }) |
+            </td>
+        </tr>
+    }
 
 </table>

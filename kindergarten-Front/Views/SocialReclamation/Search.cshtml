@@ -1,12 +1,15 @@
 ﻿@model IEnumerable<kindergarten_Front.Models.Reclamation>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Search";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Search</h2>
 
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
 <table class="table">
     <tr>
         <th>
@@ -39,7 +42,9 @@
             @Html.DisplayFor(modelItem => item.photo)
         </td>
         <td>
-            @Html.ActionLink("Details", "Details", new { id = item.id }) |
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
         </td>
     </tr>
 }

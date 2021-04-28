@@ -69,7 +69,7 @@ namespace kindergarten_Front.Controllers
             using (var reclam = new HttpClient())
             {
                 reclam.BaseAddress = new Uri("http://localhost:8081");
-                var responseTask = reclam.GetAsync("/SpringMVC/servlet/getAllReclamationsByUserId/1");
+                var responseTask = reclam.GetAsync("/SpringMVC/servlet/getAllReclamationsByUserId/2");
                 responseTask.Wait();
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
@@ -130,7 +130,7 @@ namespace kindergarten_Front.Controllers
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:8081");
-                var postJob = client.PostAsJsonAsync<Reclamation>("/SpringMVC/servlet/addSocReclamation/1/2", rec);
+                var postJob = client.PostAsJsonAsync<Reclamation>("/SpringMVC/servlet/addSocReclamation/2/2", rec);
                 postJob.Wait();
                 var postResult = postJob.Result;
                 DateTime dateCreation = DateTime.Now;
@@ -196,7 +196,7 @@ namespace kindergarten_Front.Controllers
                 client.BaseAddress = new Uri("http://localhost:8081");
 
                 //HTTP 
-                var deleteTask = client.DeleteAsync("/SpringMVC/servlet/deleteReclamation/1/" + id.ToString());
+                var deleteTask = client.DeleteAsync("/SpringMVC/servlet/deleteReclamation/2/" + id.ToString());
                 deleteTask.Wait();
 
                 var result = deleteTask.Result;

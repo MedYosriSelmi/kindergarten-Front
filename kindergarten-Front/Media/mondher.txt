@@ -1,0 +1,23 @@
+        public async Task<ActionResult> Delete(int id)
+        {
+            var response = await httpClient.GetAsync(baseAddress + "child/" + id);
+            var c = await response.Content.ReadAsAsync<Child>();
+            return View(c);
+        }
+
+
+        // POST: Publication/Delete/5
+        [HttpPost]
+        public async Task<ActionResult> Delete(int id, FormCollection collection)
+        {
+            try
+            {
+                var APIResponse = await httpClient.DeleteAsync(baseAddress + "deleteChildById/" + id);
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }

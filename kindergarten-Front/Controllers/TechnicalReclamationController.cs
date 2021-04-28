@@ -156,7 +156,7 @@ namespace kindergarten_Front.Controllers
             using (var reclam = new HttpClient())
             {
                 reclam.BaseAddress = new Uri("http://localhost:8081/");
-                var responseTask = reclam.GetAsync("/SpringMVC/servlet/getallReclamationsCombined/" + Key.ToString());
+                var responseTask = reclam.GetAsync("/SpringMVC/servlet/searchTechniclReclamation/" + Key.ToString());
                 responseTask.Wait();
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
