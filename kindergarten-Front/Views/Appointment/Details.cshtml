@@ -201,7 +201,7 @@
     </div>
     <p>
         <i class=" d-none d-sm-inline-block btn btn-warning  shadow-sm">
-            @Html.ActionLink("Edit", "Edit", new { id = Model.id })
+            @Html.ActionLink("Edit", "Edit", new { id = Model.id, idj = Model.user.id })
 
         </i>
             @Html.ActionLink("Back to List", "Index")

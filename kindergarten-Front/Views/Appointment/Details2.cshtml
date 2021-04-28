@@ -489,8 +489,10 @@
                     </dl>
                 </div>
                 <p>
-                    @Html.ActionLink("Edit", "Edit2", new { id = Model.id }) |
-                    @Html.ActionLink("Back to List", "Index2")
+                    <i class=" d-none d-sm-inline-block btn btn-outline-success  shadow-sm">
+                        @Html.ActionLink("Edit", "Edit2", new { id = Model.id, idj = Model.doctor.id })
+                        </i>
+                        @Html.ActionLink("Back to List", "Index2")
                 </p>
 
                 </table>

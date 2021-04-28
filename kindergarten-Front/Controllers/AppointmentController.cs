@@ -58,7 +58,7 @@ namespace kindergarten_Front.Controllers
 
             if (ModelState.IsValid)
             {
-                var APIResponse = await httpClient.PostAsJsonAsync<Appointment>(baseAddress + "ajouter_Doctor_rendezVous/1/4", bi);
+                var APIResponse = await httpClient.PostAsJsonAsync<Appointment>(baseAddress + "ajouter_Doctor_rendezVous/1/"+bi.doctor.id , bi);
                 
                 return RedirectToAction("Index");
             }
