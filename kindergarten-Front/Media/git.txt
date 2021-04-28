@@ -1,3 +1,0 @@
-https://github.com/MedYosriSelmi/kindergarten-Front.git
-Git credential Manager for Windows
-https://knowledge-junction.com/2020/09/10/git-visual-studio-2019-resolved-the-issue-git-failed-with-a-fatal-error-could-not-read-username-for-https-visualstudio-com-terminal-prompts-disabled-or-er/

@@ -37,32 +37,6 @@ namespace kindergarten_Front.Controllers
             return View(reclamation);
         }
 
-        public ActionResult FilterReclamation(Status status, DateTime date1, DateTime date2)
-        {
-            IEnumerable<Reclamation> reclamation = null;
-            using (var reclam = new HttpClient())
-            {
-                reclam.BaseAddress = new Uri("http://localhost:8081");
-                var responseTask = reclam.GetAsync("/SpringMVC/servlet/filterReclamationsByDateAndStatus/"+status.ToString()+"/"+date1.ToString()+"/"+date2.ToString());
-                responseTask.Wait();
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
-                {
-                    var readJob = result.Content.ReadAsAsync<IList<Reclamation>>();
-                    readJob.Wait();
-                    reclamation = readJob.Result;
-                }
-                else
-                {
-                    //return the error
-                    reclamation = Enumerable.Empty<Reclamation>();
-                    ModelState.AddModelError(String.Empty, "error");
-                }
-
-            }
-            return View(reclamation);
-        }
-
         public ActionResult GetReclamationsById()
         {
             IEnumerable<Reclamation> reclamation = null;
@@ -92,7 +66,28 @@ namespace kindergarten_Front.Controllers
         // GET: Reclamation/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            Reclamation rec = null;
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:8081/");
+
+                //HTTP GET
+
+                var responseTask = client.GetAsync("/SpringMVC/servlet/getReclamationById/" + id.ToString());
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<Reclamation>();
+                    readTask.Wait();
+
+                    rec = readTask.Result;
+                }
+            }
+
+            return View(rec);
         }
 
         // GET: Reclamation/Create
@@ -107,7 +102,7 @@ namespace kindergarten_Front.Controllers
         {
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost:8081");
+                client.BaseAddress = new Uri("http://localhost:8081/");
                 var postJob = client.PostAsJsonAsync<Reclamation>("/SpringMVC/servlet/addTechReclamation/2/", rec);
                 postJob.Wait();
                 var postResult = postJob.Result;
@@ -129,8 +124,8 @@ namespace kindergarten_Front.Controllers
         {
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost:8081");
-                var postJob = client.PostAsJsonAsync<Reclamation>("/SpringMVC/servlet/addSocReclamation/2/2", rec);
+                client.BaseAddress = new Uri("http://localhost:8081/");
+                var postJob = client.PostAsJsonAsync<Reclamation>("/SpringMVC/servlet/addSocReclamation/2/1/", rec);
                 postJob.Wait();
                 var postResult = postJob.Result;
                 DateTime dateCreation = DateTime.Now;
@@ -141,14 +136,14 @@ namespace kindergarten_Front.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(int id, string description, string photo)
+        public ActionResult Edit(int id, string description)
         {
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:8081/");
 
                 //HTTP GET
-                var putTask = client.PutAsJsonAsync<Reclamation>("/SpringMVC/servlet/updateUserReclamation/" + id.ToString() + "/" + description.ToString() + "/" + photo.ToString(), null);
+                var putTask = client.PutAsJsonAsync<Reclamation>("/SpringMVC/servlet/updateUserReclamation/" + id.ToString() + "/" + description.ToString(), null);
                 putTask.Wait();
 
                 var result = putTask.Result;

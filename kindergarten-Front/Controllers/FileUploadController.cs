@@ -22,7 +22,6 @@ namespace kindergarten_Front.Controllers
             {
                 try
                 {
-
                     //Method 2 Get file details from HttpPostedFileBase class    
 
                     if (file != null)

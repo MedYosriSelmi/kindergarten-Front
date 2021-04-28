@@ -1,4 +1,4 @@
-﻿@model IEnumerable<kindergarten_Front.Models.Reclamation>
+@model IEnumerable<kindergarten_Front.Models.Appointment>
 
 @{
     Layout = null;
@@ -126,15 +126,6 @@
                                     <a class="dropdown-item" href="page-news-single.html">SINGLE NEWS</a>
                                 </div>
                             </li>
-                            <li class="nav-item dropdown dmenu">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    RECLAMATION
-                                </a>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="https://localhost:44365/Reclamation/GetReclamationsById">Reclamations</a>
-                                    <a class="dropdown-item" href="https://localhost:44365/FileUpload/Index">Add Reclamation</a>
-                                </div>
-                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="contact.html">CONTACT US</a>
                             </li>
@@ -163,7 +154,7 @@
             </div>
         </div>
     </div>
-
+    
     <br>
     <p>
         <i class=" d-none d-sm-inline-block btn btn-warning  shadow-sm">
@@ -172,50 +163,65 @@
     </p>
     <table class="table">
         <tr>
-        <tr>
             <th>
-                @Html.DisplayNameFor(model => model.DateOfReclam)
+                @Html.DisplayNameFor(model => model.date)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.type)
+                @Html.DisplayNameFor(model => model.status)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.photo)
+                @Html.DisplayNameFor(model => model.beginhour)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.endhour)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.user)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.doctor)
             </th>
             <th></th>
-        </tr>
         </tr>
 
         @foreach (var item in Model)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.DateOfReclam)
+                    @Html.DisplayFor(modelItem => item.date)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.description)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.type)
+                    @Html.DisplayFor(modelItem => item.status)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.photo)
+                    @Html.DisplayFor(modelItem => item.beginhour)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.endhour)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.user.firstName)  @Html.DisplayFor(modelItem => item.user.lastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.doctor.firstName)  @Html.DisplayFor(modelItem => item.doctor.lastName)
                 </td>
                 <td>
                     <i class=" d-none d-sm-inline-block btn btn-toolbar  shadow-sm">
-                        @Html.ActionLink("Edit", "Edit", new { id = item.id })
+                        @Html.ActionLink("Edit", "Edit", new { id = item.id, idj = item.user.id })
                     </i>
                     <i class=" d-none d-sm-inline-block btn btn-toolbar  shadow-sm">
                         @Html.ActionLink("Details", "Details", new { id = item.id })
                     </i>
                     <i class=" d-none d-sm-inline-block btn btn-toolbar  shadow-sm">
-                        @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.id, idu = item.user.id })
                     </i>
-                </td>
-
+</td>
             </tr>
         }
 

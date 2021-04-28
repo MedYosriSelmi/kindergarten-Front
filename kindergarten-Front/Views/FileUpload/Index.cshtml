@@ -34,9 +34,12 @@
             @ViewBag.FileStatus
             @{ if (ViewBag.FileStatus == "File uploaded successfully.")
                 {
-
-                    @Html.ActionLink("CreateTechnical", "CreateTechnical", "Reclamation")
-                    @Html.ActionLink("CreateSocial", "CreateSocial", "Reclamation")
+                    <i class=" d-none d-sm-inline-block btn btn-warning  shadow-sm">
+                        @Html.ActionLink("CreateTechnical", "CreateTechnical", "Reclamation")
+                    </i>
+                    <i class=" d-none d-sm-inline-block btn btn-warning  shadow-sm">
+                        @Html.ActionLink("CreateSocial", "CreateSocial", "Reclamation")
+                    </i>
                 }
             }
         </div>

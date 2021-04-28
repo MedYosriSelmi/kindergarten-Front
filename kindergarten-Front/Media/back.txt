@@ -1,4 +1,4 @@
-ï»¿@model IEnumerable<kindergarten_Front.Models.Reclamation>
+@model IEnumerable<kindergarten_Front.Models.Bill>
 
 @{
     ViewBag.Title = "getbill";
@@ -255,7 +255,7 @@
                         </script>
                         <input class="form-control" id="myInput" type="text" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
                         <br>
-
+                        
                     </form>
 
                     <!-- Topbar Navbar -->
@@ -361,7 +361,7 @@
                                             Hi there! I am wondering if you can help me with a
                                             problem I've been having.
                                         </div>
-                                        <div class="small text-gray-500">Emily Fowler Â· 58m</div>
+                                        <div class="small text-gray-500">Emily Fowler · 58m</div>
                                     </div>
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
@@ -375,7 +375,7 @@
                                             I have the photos that you ordered last month, how
                                             would you like them sent to you?
                                         </div>
-                                        <div class="small text-gray-500">Jae Chun Â· 1d</div>
+                                        <div class="small text-gray-500">Jae Chun · 1d</div>
                                     </div>
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
@@ -389,7 +389,7 @@
                                             Last month's report looks great, I am very happy with
                                             the progress so far, keep up the good work!
                                         </div>
-                                        <div class="small text-gray-500">Morgan Alvarez Â· 2d</div>
+                                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
                                     </div>
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
@@ -403,7 +403,7 @@
                                             Am I a good boy? The reason I ask is because someone
                                             told me that people say this to all dogs, even if they aren't good...
                                         </div>
-                                        <div class="small text-gray-500">Chicken the Dog Â· 2w</div>
+                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
                                     </div>
                                 </a>
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
@@ -458,42 +458,36 @@
                         </a>
                     </div>
 
-                    <h2>List of Reclamations</h2>
+                    <h2>List of Bill</h2>
 
-                    @using (Html.BeginForm("Search", "TechnicalReclamation", FormMethod.Get))
-                    {
-                        @Html.TextBox("Key")
-                        <input type="submit" value="Search" />
-                    }
 
                     <p>
                         <a href="~/Bill/CreateBill" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                            <i></i> Create New
+                            <i ></i> Create New 
 
 
                         </a>
-
+                        
                     </p>
 
-                    <table class="table">
+                    <table class="table" >
                         <tr>
 
-                            <th>
-                                @Html.DisplayNameFor(model => model.DateOfReclam)
-                            </th>
                             <th>
                                 @Html.DisplayNameFor(model => model.description)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.status)
+                                @Html.DisplayNameFor(model => model.dateOfBill)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.type)
+                                @Html.DisplayNameFor(model => model.totalPrice)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.photo)
+                                @Html.DisplayNameFor(model => model.user)
                             </th>
-                            <th></th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.kindergarten)
+                            </th>
 
                             <th></th>
                         </tr>
@@ -501,32 +495,36 @@
                         @foreach (var item in Model)
                         {
                             <tr id="souhaib">
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.DateOfReclam)
-                                </td>
+
                                 <td>
                                     @Html.DisplayFor(modelItem => item.description)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.status)
+                                    @Html.DisplayFor(modelItem => item.dateOfBill)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.type)
+                                    @Html.DisplayFor(modelItem => item.totalPrice)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.photo)
+                                    @Html.DisplayFor(modelItem => item.user.firstName)  @Html.DisplayFor(modelItem => item.user.lastName)
                                 </td>
-
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.kindergarten.name)
+                                </td>
                                 <td>
                                     <p>
                                         <i class=" d-none d-sm-inline-block btn btn-facebook  shadow-sm">
-                                            @Html.ActionLink("Edit", "Edit", new { id = item.id })
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.id, idj = item.kindergarten.id })
                                         </i>
                                         <i class=" d-none d-sm-inline-block btn btn-success shadow-sm">
                                             @Html.ActionLink("Details", "Details", new { id = item.id })
                                         </i>
+                                        <i class=" d-none d-sm-inline-block btn btn-danger  shadow-sm">
+
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                                        </i>
                                         <i class=" d-none d-sm-inline-block btn btn-warning shadow-sm">
-                                            @Html.ActionLink("Notify", "Notify", new { id = item.id })
+                                            @Html.ActionLink("Calcul", "calcul", new { id = item.id })
                                         </i>
 
                                     </p>
@@ -565,7 +563,7 @@
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">Ã—</span>
+                            <span aria-hidden="true">×</span>
                         </button>
                     </div>
                     <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
@@ -597,4 +595,3 @@
 </body>
 
 </html>
-

@@ -2113,24 +2113,22 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\dash.cshtml" />
     <Content Include="Views\Home\Front.cshtml" />
-    <Content Include="Views\ReclamationViews\ListReclamationsBack.cshtml" />
     <Content Include="Views\Reclamation\Index.cshtml" />
     <Content Include="Views\Reclamation\GetReclamationsById.cshtml" />
     <Content Include="Views\Reclamation\CreateSocial.cshtml" />
     <Content Include="Views\Reclamation\Delete.cshtml" />
     <Content Include="Views\Reclamation\CreateTechnical.cshtml" />
-    <Content Include="Views\Reclamation\EditRec.cshtml" />
     <Content Include="Views\TechnicalReclamation\Index.cshtml" />
     <Content Include="Views\SocialReclamation\Index.cshtml" />
     <Content Include="Views\TechnicalReclamation\Edit.cshtml" />
     <Content Include="Views\SocialReclamation\Edit.cshtml" />
     <Content Include="Views\TechnicalReclamation\Search.cshtml" />
-    <Content Include="Views\SocialReclamation\FilterReclamation.cshtml" />
-    <Content Include="Views\Reclamation\Edit.cshtml" />
     <Content Include="Views\SocialReclamation\Details.cshtml" />
     <Content Include="Views\TechnicalReclamation\Details.cshtml" />
     <Content Include="Views\SocialReclamation\Search.cshtml" />
     <Content Include="Views\FileUpload\Index.cshtml" />
+    <Content Include="Views\Reclamation\Edit.cshtml" />
+    <Content Include="Views\Reclamation\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
