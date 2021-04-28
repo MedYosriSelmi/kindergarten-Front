@@ -78,11 +78,25 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-target="#collapseTwo"
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEvent"
                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fa fa-home"></i>
                     <span>Kindergarten </span>
                 </a>
+                <div id="collapseEvent" class="collapse" aria-labelledby="headingEvent"
+                     data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Services</h6>
+                        <a class="collapse-item" href="~/Kindergarten/addKind">Add Kindergarten</a>
+                        <a class="collapse-item" href="~/Kindergarten/Index">List of Kindergartens</a>
+                        <a class="collapse-item" href="~/Kindergarten/updateKind">Update Kindergarten</a>
+                        <a class="collapse-item" href="~/Planning/addPlan">Add Planning</a>
+                        <a class="collapse-item" href="~/Planning/Index">List of Plannings</a>
+                        <a class="collapse-item" href="~/Planning/updatePlan">Update Planning</a>
+                        <a class="collapse-item" href="~/Publication/Index">List of Publications</a>
+
+                    </div>
+                </div>
 
             </li>
 

@@ -37,12 +37,7 @@ namespace kindergarten_Front.Controllers
             return View(pub);
         }
 
-        // GET: Publication/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
+       
         // GET: Publication/addPub
         public ActionResult addPub()
         {
@@ -62,27 +57,12 @@ namespace kindergarten_Front.Controllers
 
                 if (postResult.IsSuccessStatusCode)
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("getPubFront");
             }
             //ModelState.AddModelError(string.Empty, "Server occured errors. Please check with admin!");
             return View(pub);
         }
 
-        // POST: Publication/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
 
         // GET: Publication/Edit/5
         public ActionResult Edit(int id)
@@ -90,21 +70,6 @@ namespace kindergarten_Front.Controllers
             return View();
         }
 
-        // POST: Publication/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
 
         // GET: Publication/DeletePub/5
         public ActionResult DeletePub(int id)
@@ -174,21 +139,34 @@ namespace kindergarten_Front.Controllers
 
             return View(rec);
         }
-
-        // POST: Publication/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult getPubFront()
         {
-            try
+            IEnumerable<Publication> pub = null;
+            using (var x = new HttpClient())
             {
-                // TODO: Add delete logic here
+                x.BaseAddress = new Uri("http://localhost:8081");
+                var responseTask = x.GetAsync("/SpringMVC/servlet/publication/getAllPublications");
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readJob = result.Content.ReadAsAsync<IList<Publication>>();
+                    readJob.Wait();
+                    pub = readJob.Result;
+                }
+                else
+                {
+                    //return the error
+                    pub = Enumerable.Empty<Publication>();
+                    ModelState.AddModelError(String.Empty, "error");
+                }
 
-                return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View(pub);
         }
+
+
+
+
     }
 }

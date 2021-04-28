@@ -2121,6 +2121,9 @@
     <Content Include="Views\Publication\updatePub.cshtml" />
     <Content Include="Views\Kindergarten\updateKind.cshtml" />
     <Content Include="Views\Planning\updatePlan.cshtml" />
+    <Content Include="Views\Publication\getPubFront.cshtml" />
+    <Content Include="Views\Kindergarten\KindFront.cshtml" />
+    <Content Include="Views\Kindergarten\DetailsKind.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

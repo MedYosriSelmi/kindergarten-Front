@@ -1,20 +1,19 @@
-﻿@model kindergarten_Front.Models.Publication
+﻿@model IEnumerable<kindergarten_Front.Models.Kindergarten>
 
 @{
     Layout = null;
 }
-
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from html.rometheme.net/kids/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 14 Apr 2021 00:13:58 GMT -->
+<!-- Mirrored from html.rometheme.net/kids/page-events.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 14 Apr 2021 00:14:55 GMT -->
 <head>
     <!-- Basic Page Needs
     ================================================== -->
     <meta charset="utf-8">
     <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>KIDS - Kindergarten and Child Care Html Templates</title>
+    <title>CHILDHOOD - Kindergartens and Child Care </title>
     <meta name="description" content="KIDS is a clean, modern, and fully responsive Html Template. Take your Startup business website to the next level. It is designed for kindergarten, childcare, homeschooling, school, learning, playground businesses or any type of person or business who wants to showcase their work, services and professional way.">
     <meta name="keywords" content="business, care, childcare, children, clean, corporate, happykids, homeschool, kids, kindergarten, playground, responsive, school, learning">
     <meta name="author" content="rometheme.net">
@@ -22,10 +21,10 @@
     <!-- ==============================================
     Favicons
     =============================================== -->
-    <link rel="shortcut icon" href="~/Content/kids/images/favicon.ico">
-    <link rel="apple-touch-icon" href="~/Content/kids/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="~/Content/kids/images/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="~/Content/kids/images/apple-touch-icon-114x114.png">
+    <link rel="shortcut icon" href="~/Content/kids/images/logo.png">
+    <link rel="apple-touch-icon" href="~/Content/kids/images/logo.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="~/Content/kids/images/logo.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="~/Content/kids/images/logo.png">
 
     <!-- ==============================================
     CSS VENDOR
@@ -69,9 +68,7 @@
                                 <i class="fa fa-phone"></i> (+216) 70 400 288
                             </div>
                             <div class="info-item">
-                                <i class="fa fa-envelope-o"></i> <a href="mailto:support@kids.com" title="">
-                                    kinder.garten0206@gmail.com
-                                </a>
+                                <i class="fa fa-envelope-o"></i> <a href="mailto:support@kids.com" title="">kinder.garten0206@gmail.com</a>
                             </div>
                         </div>
                     </div>
@@ -91,7 +88,7 @@
         <div class="navbar-main">
             <div class="container">
                 <nav id="navbar-example" class="navbar navbar-expand-lg">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="~/Content/kids/index.html">
                         <img src="~/Content/kids/images/logo.png" alt="">
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -100,10 +97,10 @@
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="index.html">HOME</a>
+                                <a class="nav-link" href="/Home/Front">HOME</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="about.html">ABOUT US</a>
+                                <a class="nav-link" href="~/Content/kids/about.html">ABOUT US</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="classes.html">CLASSES</a>
@@ -125,7 +122,7 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="contact.html">CONTACT US</a>
+                                <a class="nav-link" href="~/Content/kids/contact.html">CONTACT US</a>
                             </li>
                         </ul>
                     </div>
@@ -137,64 +134,126 @@
     </div>
 
     <!-- BANNER -->
-    <div class="section banner-page" data-background="~/Content/kids/images/banner-single.jpg">
-        <div class="content-wrap pos-relative">
-            <div class="d-flex justify-content-center bd-highlight mb-3">
-                <div class="title-page">Publications</div>
+    <div id="oc-fullslider" class="banner">
+        <div class="owl-carousel owl-theme full-screen">
+            <div class="item">
+                <img src="~/Content/kids/images/gallery-5.jpg" alt="Slider">
+                <div class="overlay-bg"></div>
+                <div class="container d-flex align-items-center">
+                    <div class="wrap-caption">
+                        <h4 class="caption-supheading">Welcome</h4>
+                        <h1 class="caption-heading">Find Care.</h1>
+                    </div>
+                </div>
             </div>
-            <div class="d-flex justify-content-center bd-highlight mb-3">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb ">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">publications</li>
-                    </ol>
-                </nav>
+            <div class="item">
+                <img src="~/Content/kids/images/gallery-2.jpg" alt="Slider">
+                <div class="overlay-bg"></div>
+                <div class="container d-flex align-items-center">
+                    <div class="wrap-caption">
+                        <h1 class="caption-heading">Find the best place.</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="~/Content/kids/images/gallery-1.jpg" alt="Slider">
+                <div class="overlay-bg"></div>
+                <div class="container d-flex align-items-center">
+                    <div class="wrap-caption">
+                        <h1 class="caption-heading">Choose your child's security..</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="custom-nav owl-nav"></div>
+    </div>
+    <br>
+
+
+
+    <div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#myInput").on("keyup", function () {
+                    var value = $(this).val().toLowerCase();
+                    $("#rihab ").filter(function () {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+        </script>
+        <input class="form-control" id="myInput" type="text" id="navbar-search-input" placeholder="Search for .." aria-label="search" aria-describedby="search" aria-describedby="basic-addon2">
+        <br>
+
+    </div>
+
+    <div class="section">
+        <div class="content-wrap">
+            <div class="container">
+                <div class="row">
+
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-sm-12 col-md-6 col-lg-4 mb-5" id="rihab">
+                            <div class="rs-news-1">
+                                <div>
+                                    <img src="@Url.Content("~/Content/Upload/"+item.photo)" alt="" class="img-fluid" />
+                                </div>
+                                <div class="body-box">
+                                    <p> @Html.DisplayFor(modelItem => item.name)</p>
+                                </div>
+                                <div class="body-box">
+                                    <p> @Html.DisplayFor(modelItem => item.location)</p>
+                                </div>
+                                <div class="body-box">
+                                    <p> @Html.DisplayFor(modelItem => item.description)</p>
+                                </div>
+                                <div class="body-box">
+                                    <p> @Html.DisplayFor(modelItem => item.phone)</p>
+                                </div>
+                                <div class="body-box">
+                                    <p> @Html.DisplayFor(modelItem => item.pricePerChild)TND</p>
+                                </div>
+                                <div class="body-box">
+                                    <p> @Html.DisplayFor(modelItem => item.email)</p>
+                                </div>
+                                <div class="text-center">
+                                    <i class="btn btn-primary">
+                                        @Html.ActionLink("SEE MORE", "DetailsKind", new { id = item.id })
+                                    </i>
+                                </div>
+                            </div>
+                        </div>
+                       
+                    }
+
+                </div>
             </div>
         </div>
     </div>
 
-    <h2>updatePub</h2>
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+            </nav>
 
-        <div class="form-horizontal">
-            <h4>Publication</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.HiddenFor(model => model.id)
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.photo, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.photo, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.photo, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
-                </div>
-            </div>
         </div>
-    }
-
-    <div>
-        @Html.ActionLink("Back to List", "Index")
     </div>
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-    }
+
+    </div>
+    </div>
+    </div>
+    <!-- CTA -->
     <div class="section bg-tertiary">
         <div class="content-wrap py-5">
             <div class="container">
@@ -274,11 +333,10 @@
                             </div>
 
                             <ul class="list">
-                                <li><a href="about.html" title="About us">About us</a></li>
-                                <li><a href="teachers.html" title="Our Teacher">Our Teacher</a></li>
-                                <li><a href="classes.html" title="Our Classes">Our Classes</a></li>
-                                <li><a href="page-events.html" title="Our Events">Our Events</a></li>
-                                <li><a href="contact.html" title="Contact Us">Contact Us</a></li>
+                                <li><a href="~/Content/kids/about.html" title="About us">About us</a></li>
+                                <li><a href="~/Content/kids/classes.html" title="Our Teacher">Our Kindergartens</a></li>
+                                <li><a href="~/Event/getFrontEvent" title="Our Events">Our Events</a></li>
+                                <li><a href="~/Content/kids/contact.html" title="Contact Us">Contact Us</a></li>
                             </ul>
 
                         </div>
@@ -306,24 +364,23 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12 col-md-12">
-                        <p class="ftex">Copyright 2019 &copy; <span class="color-primary">Kids HTML Template</span>. Designed by <span class="color-primary">Rometheme.</span></p>
+
                     </div>
                 </div>
             </div>
+
         </div>
+        <!-- JS VENDOR -->
+        <script src="~/Content/kids/js/vendor/jquery.min.js"></script>
+        <script src="~/Content/kids/js/vendor/bootstrap.min.js"></script>
+        <script src="~/Content/kids/js/vendor/owl.carousel.js"></script>
+        <script src="~/Content/kids/js/vendor/jquery.magnific-popup.min.js"></script>
 
-    </div>
-    <!-- JS VENDOR -->
-    <script src="~/Content/kids/js/vendor/jquery.min.js"></script>
-    <script src="~/Content/kids/js/vendor/bootstrap.min.js"></script>
-    <script src="~/Content/kids/js/vendor/owl.carousel.js"></script>
-    <script src="~/Content/kids/js/vendor/jquery.magnific-popup.min.js"></script>
+        <!-- SENDMAIL -->
+        <script src="~/Content/kids/js/vendor/validator.min.js"></script>
+        <script src="~/Content/kids/js/vendor/form-scripts.js"></script>
 
-    <!-- SENDMAIL -->
-    <script src="~/Content/kids/js/vendor/validator.min.js"></script>
-    <script src="~/Content/kids/js/vendor/form-scripts.js"></script>
-
-    <script src="~/Content/kids/js/script.js"></script>
+        <script src="~/Content/kids/js/script.js"></script>
 
 </body>
 

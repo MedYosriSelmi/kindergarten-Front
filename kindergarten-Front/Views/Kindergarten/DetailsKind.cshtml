@@ -1,13 +1,15 @@
-﻿@model kindergarten_Front.Models.Publication
+﻿@model kindergarten_Front.Models.Kindergarten
 
 @{
     Layout = null;
 }
-
 <!DOCTYPE html>
+@{
+    Layout = "";
+}
 <html lang="en">
 
-<!-- Mirrored from html.rometheme.net/kids/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 14 Apr 2021 00:13:58 GMT -->
+<!-- Mirrored from html.rometheme.net/kids/page-events.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 14 Apr 2021 00:14:55 GMT -->
 <head>
     <!-- Basic Page Needs
     ================================================== -->
@@ -66,12 +68,10 @@
                     <div class="col-sm-8 col-md-6">
                         <div class="info">
                             <div class="info-item">
-                                <i class="fa fa-phone"></i> (+216) 70 400 288
+                                <i class="fa fa-phone"></i> +62 7144 3300
                             </div>
                             <div class="info-item">
-                                <i class="fa fa-envelope-o"></i> <a href="mailto:support@kids.com" title="">
-                                    kinder.garten0206@gmail.com
-                                </a>
+                                <i class="fa fa-envelope-o"></i> <a href="mailto:support@kids.com" title="">support@kids.com</a>
                             </div>
                         </div>
                     </div>
@@ -91,7 +91,7 @@
         <div class="navbar-main">
             <div class="container">
                 <nav id="navbar-example" class="navbar navbar-expand-lg">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="~/Content/kids/index.html">
                         <img src="~/Content/kids/images/logo.png" alt="">
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -100,10 +100,10 @@
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="index.html">HOME</a>
+                                <a class="nav-link" href="/Home/front">HOME</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="about.html">ABOUT US</a>
+                                <a class="nav-link" href="~/Content/kids/about.html">ABOUT US</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="classes.html">CLASSES</a>
@@ -125,7 +125,7 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="contact.html">CONTACT US</a>
+                                <a class="nav-link" href="~/Content/kids/contact.html">CONTACT US</a>
                             </li>
                         </ul>
                     </div>
@@ -136,65 +136,51 @@
 
     </div>
 
-    <!-- BANNER -->
-    <div class="section banner-page" data-background="~/Content/kids/images/banner-single.jpg">
-        <div class="content-wrap pos-relative">
-            <div class="d-flex justify-content-center bd-highlight mb-3">
-                <div class="title-page">Publications</div>
-            </div>
-            <div class="d-flex justify-content-center bd-highlight mb-3">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb ">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">publications</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </div>
 
-    <h2>updatePub</h2>
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+    <div class="section ">
+        <div class="content-wrap">
+            <div class="container">
+                <div class="row">
 
-        <div class="form-horizontal">
-            <h4>Publication</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.HiddenFor(model => model.id)
+                    <div class="col-sm-12 col-md-12 col-lg-9">
+                        <div class="single-news">
+                            <p><img src="@Url.Content("~/Content/Upload/" + Model.photo)" alt="" class="img-fluid rounded"></p>
+                            <div class="spacer-30"></div>
+                            <div><p>Name: @Html.DisplayFor(model => model.name)</p></div>
+                            <p>Location: @Html.DisplayFor(model => model.location)</p>
+                            <div><p>Description: @Html.DisplayFor(model => model.description)</p></div>
+                            <div class="spacer-30"></div>
+                            <p>Phone Number: @Html.DisplayFor(model => model.phone)</p>
+                            <div class="spacer-30"></div>
+                            <div><p>Price: @Html.DisplayFor(model => model.pricePerChild)TND</p></div>
+                            <p>Email: @Html.DisplayFor(model => model.email)</p>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
-                </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.photo, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.photo, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.photo, "", new { @class = "text-danger" })
-                </div>
-            </div>
 
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
+                            <p>
+
+                                @Html.ActionLink("Back to List", "KindFront")
+                            </p>
+                            <br>
+
+
+
+                        </div>
+                    </div>
+
+                         
+                            <div class="spacer-30"></div>
+                            <a href="#" class="btn btn-primary btn-block">Contact Kindergarten</a>
+                            <div class="spacer-30"></div>
+                        </div>
+                   
+
                 </div>
             </div>
         </div>
-    }
-
-    <div>
-        @Html.ActionLink("Back to List", "Index")
     </div>
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-    }
+    <!-- CTA -->
     <div class="section bg-tertiary">
         <div class="content-wrap py-5">
             <div class="container">
@@ -329,3 +315,4 @@
 
 <!-- Mirrored from html.rometheme.net/kids/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 14 Apr 2021 00:13:58 GMT -->
 </html>
+© 2021 GitHub, Inc.

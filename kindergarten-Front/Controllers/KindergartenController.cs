@@ -36,7 +36,34 @@ namespace kindergarten_Front.Controllers
                 }
                 return View(kindergarten);
             }
-       
+
+        public ActionResult KindFront()
+        {
+            IEnumerable<Kindergarten> kindergarten = null;
+            using (var x = new HttpClient())
+            {
+                x.BaseAddress = new Uri("http://localhost:8081");
+                var responseTask = x.GetAsync("/SpringMVC/servlet/kindergarten/getAllKindergartens");
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readJob = result.Content.ReadAsAsync<IList<Kindergarten>>();
+                    readJob.Wait();
+                    kindergarten = readJob.Result;
+                }
+                else
+                {
+                    //return the error
+                    kindergarten = Enumerable.Empty<Kindergarten>();
+                    ModelState.AddModelError(String.Empty, "error");
+                }
+
+            }
+            return View(kindergarten);
+        }
+
+
 
         // GET: Kindergarten/Details/5
         public ActionResult Details(int id)
@@ -89,6 +116,7 @@ namespace kindergarten_Front.Controllers
                 return View("updateKind");
             }
         }
+
         public ActionResult updateKind(int id)
         {
             Kindergarten rec = null;
@@ -154,5 +182,31 @@ namespace kindergarten_Front.Controllers
                 return View();
             }
         }
+        public ActionResult DetailsKind(int id)
+        {
+            Kindergarten rec = null;
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:8081/");
+
+                //HTTP GET
+
+                var responseTask = client.GetAsync("/SpringMVC/servlet/kindergarten/getKindById/" + id.ToString());
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<Kindergarten>();
+                    readTask.Wait();
+
+                    rec = readTask.Result;
+                }
+            }
+
+            return View(rec);
+        }
+
     }
 }
