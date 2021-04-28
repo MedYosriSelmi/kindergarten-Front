@@ -20,18 +20,13 @@ namespace kindergarten_Front.Controllers
 
         }
         // GET: Comment
-        public async Task<ActionResult> getDiscussion(int senderId, int recieverId)
+        public async Task<ActionResult> getDiscussion()
         {
-            var tokenResponse = await httpClient.GetAsync(baseAddress + "getDiscussion/" + senderId + "/" + recieverId);
-            if (tokenResponse.IsSuccessStatusCode)
-            {
+            var tokenResponse = await httpClient.GetAsync(baseAddress + "getDiscussion/" + 1 + "/" + 2);
+            
                 var app = await tokenResponse.Content.ReadAsAsync<IEnumerable<Message>>();
-                return View("getDiscussion.cshtml", app.OrderByDescending(bi => bi.DateDelivered).Reverse());
-            }
-            else
-            {
-                return View("getDiscussion.cshtml", new List<Message>());
-            }
+                return View("getDiscussion.cshtml");
+            
         }
 
         // GET: Message/Details/5
@@ -48,15 +43,15 @@ namespace kindergarten_Front.Controllers
 
         // POST: Comment/Create
         [HttpPost]
-        public async Task<ActionResult> AddMessage(Message message, int senderId, int recieverId)
+        public async Task<ActionResult> AddMessage(Message message)
         {
             var APIResponse = await httpClient.PostAsJsonAsync<Message>(baseAddress +
-                    "addMessage/" + senderId
-                    + "/" + recieverId
+                    "addMessage/" + 1
+                    + "/" + 2
                     + "?description="
                     + message.description, message);
 
-            return RedirectToAction("../Subject/IndexFront");
+            return RedirectToAction("getDiscussion");
 
 
         }

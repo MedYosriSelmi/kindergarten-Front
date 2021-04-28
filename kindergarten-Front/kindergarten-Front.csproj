@@ -2131,7 +2131,6 @@
     <Content Include="Views\Subject\Approve.cshtml" />
     <Content Include="Views\Subject\IndexFront.cshtml" />
     <Content Include="Views\Subject\getSubjectByUserId.cshtml" />
-    <Content Include="Views\Comment\Parent.cshtml" />
     <Content Include="Views\Comment\Child.cshtml" />
     <Content Include="Views\Comment\AddParentComment.cshtml" />
     <Content Include="Views\Comment\AddChildComment.cshtml" />
@@ -2141,6 +2140,9 @@
     <Content Include="Views\Message\getDiscussion.cshtml" />
     <Content Include="Views\Message\Edit.cshtml" />
     <Content Include="Views\Message\Delete.cshtml" />
+    <Content Include="Views\LikesSub\AddLike.cshtml" />
+    <Content Include="Views\Comment\Parent.cshtml" />
+    <Content Include="Views\Message\AddMessage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

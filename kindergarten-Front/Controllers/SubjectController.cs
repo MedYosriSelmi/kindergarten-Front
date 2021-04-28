@@ -46,11 +46,11 @@ namespace kindergarten_Front.Controllers
             if (tokenResponse.IsSuccessStatusCode)
             {
                 var app = await tokenResponse.Content.ReadAsAsync<IEnumerable<Subject>>();
-                return View("~/Views/Subject/Index.cshtml", app.OrderByDescending(bi => bi.creationDate));
+                return View("~/Views/Subject/IndexFront.cshtml", app.OrderByDescending(bi => bi.creationDate));
             }
             else
             {
-                return View("~/Views/Subject/Index.cshtml", new List<Subject>());
+                return View("~/Views/Subject/IndexFront.cshtml", new List<Subject>());
             }
         }
 
@@ -91,7 +91,7 @@ namespace kindergarten_Front.Controllers
                     "addSubjectWithImage?description=" + subject.description + "&name="
                     + subject.name + "&userId=" + subject.user.id , subject);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("IndexFront");
 
 
         }
@@ -124,9 +124,9 @@ namespace kindergarten_Front.Controllers
         public async Task<ActionResult> Approve(int id)
         {
 
-            var response = await httpClient.GetAsync(baseAddress + "getSubjecBytId/" + id);
+            var response = await httpClient.GetAsync(baseAddress + "getSubjectById/" + id);
             var a = await response.Content.ReadAsAsync<Subject>();
-            return View(a);
+            return View("Approve");
         }
 
         // POST: Subject/Edit/5
@@ -148,9 +148,9 @@ namespace kindergarten_Front.Controllers
         // GET: Subject/Delete/5
         public async Task<ActionResult> Delete(int id)
         {
-            var response = await httpClient.GetAsync(baseAddress + "getSubjecBytId/" + id);
+            var response = await httpClient.GetAsync(baseAddress + "getSubjectById/" + id);
             var a = await response.Content.ReadAsAsync<Subject>();
-            return View(a);
+            return View("Delete");
         }
 
         // POST: Appointment/Delete/

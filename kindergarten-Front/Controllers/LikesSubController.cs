@@ -63,10 +63,10 @@ namespace kindergarten_Front.Controllers
 
         // POST: Comment/Create
         [HttpPost]
-        public async Task<ActionResult> AddLike( LikesSub likesSub,int userId, int subjectId)
+        public async Task<ActionResult> AddLike( LikesSub likesSub, int userId, int subjectId)
         {
             var APIResponse = await httpClient.PostAsJsonAsync<LikesSub>(baseAddress +
-                    "addParentComment/" + userId
+                    "addLikesSub/" + userId
                     + "/" + subjectId , likesSub);
 
             return RedirectToAction("../Subject/IndexFront");

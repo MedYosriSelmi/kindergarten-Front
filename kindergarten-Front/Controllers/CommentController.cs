@@ -23,16 +23,12 @@ namespace kindergarten_Front.Controllers
         // GET: Comment
         public async Task<ActionResult> Parent(int subjectId)
         {
-            var tokenResponse = await httpClient.GetAsync(baseAddress + "getCommentBySubjectId/"+ subjectId);
-            if (tokenResponse.IsSuccessStatusCode)
-            {
+            var tokenResponse = await httpClient.GetAsync(baseAddress + "getCommentBySubjectId/" + subjectId);
+            
                 var app = await tokenResponse.Content.ReadAsAsync<IEnumerable<Comment>>();
-                return View("~/Views/Comment/Index.cshtml", app.OrderByDescending(bi => bi.creationDate));
-            }
-            else
-            {
-                return View("~/Views/Comment/Index.cshtml", new List<Comment>());
-            }
+                return View(app);
+            
+
         }
 
         // GET: Comment
@@ -42,7 +38,7 @@ namespace kindergarten_Front.Controllers
             if (tokenResponse.IsSuccessStatusCode)
             {
                 var app = await tokenResponse.Content.ReadAsAsync<IEnumerable<Comment>>();
-                return View("~/Views/Comment/Index.cshtml", app.OrderByDescending(bi => bi.creationDate).Reverse());
+                return View("~/Views/Comment/Child/"+ parentId, app.OrderByDescending(bi => bi.creationDate).Reverse());
             }
             else
             {
@@ -101,7 +97,7 @@ namespace kindergarten_Front.Controllers
         {
 
             var response = await httpClient.GetAsync(baseAddress + "getCommentBytId/" + id);
-            var a = await response.Content.ReadAsAsync<Subject>();
+            var a = await response.Content.ReadAsAsync<Comment>();
             return View(a);
         }
 
@@ -122,7 +118,7 @@ namespace kindergarten_Front.Controllers
         public async Task<ActionResult> Delete(int id)
         {
             var response = await httpClient.GetAsync(baseAddress + "getCommentBytId/" + id);
-            var a = await response.Content.ReadAsAsync<Subject>();
+            var a = await response.Content.ReadAsAsync<Comment>();
             return View(a);
         }
 
