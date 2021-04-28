@@ -16,7 +16,5 @@ namespace kindergarten_Front.Models
         public string description { get; set; }
         public string photo { get; set; }
 
-        public Kindergarten Kindergarten { get; set; }
-        public User User { get; set; }
     }
 }

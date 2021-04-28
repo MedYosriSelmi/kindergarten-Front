@@ -2115,7 +2115,12 @@
     <Content Include="Views\Kindergarten\DeleteKindergarten.cshtml" />
     <Content Include="Views\Planning\DeletePlanning.cshtml" />
     <Content Include="Views\Publication\DeletePub.cshtml" />
-    <Content Include="Views\Kindergarten\Create.cshtml" />
+    <Content Include="Views\Kindergarten\addKind.cshtml" />
+    <Content Include="Views\Publication\addPub.cshtml" />
+    <Content Include="Views\Planning\addPlan.cshtml" />
+    <Content Include="Views\Publication\updatePub.cshtml" />
+    <Content Include="Views\Kindergarten\updateKind.cshtml" />
+    <Content Include="Views\Planning\updatePlan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

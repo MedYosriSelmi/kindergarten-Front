@@ -43,10 +43,29 @@ namespace kindergarten_Front.Controllers
             return View();
         }
 
-        // GET: Publication/Create
-        public ActionResult Create()
+        // GET: Publication/addPub
+        public ActionResult addPub()
         {
             return View();
+        }
+        [HttpPost]
+        public ActionResult addPub(Publication pub)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:8081");
+                var postJob = client.PostAsJsonAsync<Publication>("/SpringMVC/servlet/publication/addPub/10/4", pub);
+                postJob.Wait();
+                // return View();
+                var postResult = postJob.Result;
+                DateTime dateCreation = DateTime.Now;
+
+                if (postResult.IsSuccessStatusCode)
+
+                    return RedirectToAction("Index");
+            }
+            //ModelState.AddModelError(string.Empty, "Server occured errors. Please check with admin!");
+            return View(pub);
         }
 
         // POST: Publication/Create
@@ -108,6 +127,52 @@ namespace kindergarten_Front.Controllers
                 return RedirectToAction("Index");
 
             }
+        }
+        [HttpPost]
+        public ActionResult updatePub(int id, string description)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:8081/");
+
+                //HTTP GET
+                var putTask = client.PutAsJsonAsync<Publication>("/SpringMVC/servlet/publication/updatePub/" + id.ToString() + "/" + description.ToString(), null);
+                putTask.Wait();
+
+                var result = putTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+
+                    return RedirectToAction("Index");
+
+                }
+                return View("updatePub");
+            }
+        }
+        public ActionResult updatePub(int id)
+        {
+            Publication rec = null;
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:8081/");
+
+                //HTTP GET
+
+                var responseTask = client.GetAsync("/SpringMVC/servlet/publication/getPubById/" + id.ToString());
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<Publication>();
+                    readTask.Wait();
+
+                    rec = readTask.Result;
+                }
+            }
+
+            return View(rec);
         }
 
         // POST: Publication/Delete/5

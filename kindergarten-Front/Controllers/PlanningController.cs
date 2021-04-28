@@ -43,48 +43,76 @@ namespace kindergarten_Front.Controllers
             return View();
         }
 
+        public ActionResult addPlan()
+        {
+            return View();
+        }
+        [HttpPost]
         // GET: Planning/Create
-        public ActionResult Create()
+        public ActionResult addPlan(Planning plan)
         {
-            return View();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:8081");
+                var postJob = client.PostAsJsonAsync<Planning>("/SpringMVC/servlet/planning/addPlan/10/7", plan);
+                postJob.Wait();
+                // return View();
+                var postResult = postJob.Result;
+                DateTime dateCreation = DateTime.Now;
+
+                if (postResult.IsSuccessStatusCode)
+
+                    return RedirectToAction("Index");
+            }
+            //ModelState.AddModelError(string.Empty, "Server occured errors. Please check with admin!");
+            return View(plan);
         }
 
-        // POST: Planning/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult updatePlan(int id, string departure, string destination)
         {
-            try
+            using (var client = new HttpClient())
             {
-                // TODO: Add insert logic here
+                client.BaseAddress = new Uri("http://localhost:8081/");
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
+                //HTTP GET
+                var putTask = client.PutAsJsonAsync<Planning>("/SpringMVC/servlet/planning/updatePlan/" + id.ToString() + "/" + departure.ToString() + "/" + destination.ToString(), null);
+                putTask.Wait();
+
+                var result = putTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+
+                    return RedirectToAction("Index");
+
+                }
+                return View("updatePlan");
             }
         }
-
-        // GET: Planning/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult updatePlan(int id)
         {
-            return View();
-        }
+            Planning rec = null;
 
-        // POST: Planning/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
+            using (var client = new HttpClient())
             {
-                // TODO: Add update logic here
+                client.BaseAddress = new Uri("http://localhost:8081/");
 
-                return RedirectToAction("Index");
+                //HTTP GET
+
+                var responseTask = client.GetAsync("/SpringMVC/servlet/planning/getPlanById/" + id.ToString());
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<Planning>();
+                    readTask.Wait();
+
+                    rec = readTask.Result;
+                }
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(rec);
         }
 
         // GET: Planning/DeletePlanning/5

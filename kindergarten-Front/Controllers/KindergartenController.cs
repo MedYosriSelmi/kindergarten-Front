@@ -43,14 +43,18 @@ namespace kindergarten_Front.Controllers
         {
             return View();
         }
-
-        // GET: Kindergarten/Create
-        public ActionResult Create(Kindergarten kindergarten)
+        public ActionResult addKind()
+        {
+            return View();
+        }
+        [HttpPost]
+        // GET: Kindergarten/addKind
+        public ActionResult addKind(Kindergarten kindergarten)
         {
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:8081");
-                var postJob = client.PostAsJsonAsync<Kindergarten>("/SpringMVC/servlet/kindergarten/addKindergarten", kindergarten);
+                var postJob = client.PostAsJsonAsync<Kindergarten>("/SpringMVC/servlet/kindergarten/addKind", kindergarten);
                 postJob.Wait();
                 // return View();
                 var postResult = postJob.Result;
@@ -64,53 +68,56 @@ namespace kindergarten_Front.Controllers
             return View(kindergarten);
         }
 
-        // POST: Kindergarten/addKindergarten
         [HttpPost]
-        public ActionResult addKindergarten(Kindergarten kindergarten)
+        public ActionResult updateKind(int id, string description)
         {
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost:8081");
-                var postJob = client.PostAsJsonAsync<Kindergarten>("/SpringMVC/servlet/kindergarten/addKindergarten", kindergarten);
-                postJob.Wait();
-                // return View();
-                var postResult = postJob.Result;
-                DateTime dateCreation = DateTime.Now;
+                client.BaseAddress = new Uri("http://localhost:8081/");
 
-                if (postResult.IsSuccessStatusCode)
+                //HTTP GET
+                var putTask = client.PutAsJsonAsync<Kindergarten>("/SpringMVC/servlet/kindergarten/updateKind/" + id.ToString() + "/" + description.ToString(), null);
+                putTask.Wait();
+
+                var result = putTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
 
                     return RedirectToAction("Index");
+
+                }
+                return View("updateKind");
             }
-            //ModelState.AddModelError(string.Empty, "Server occured errors. Please check with admin!");
-           return View(kindergarten);
         }
-
-        // GET: Kindergarten/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult updateKind(int id)
         {
+            Kindergarten rec = null;
 
-            return View();
-        }
-
-        // POST: Kindergarten/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
+            using (var client = new HttpClient())
             {
-                // TODO: Add update logic here
+                client.BaseAddress = new Uri("http://localhost:8081/");
 
-                return RedirectToAction("Index");
+                //HTTP GET
+
+                var responseTask = client.GetAsync("/SpringMVC/servlet/kindergarten/getKindById/" + id.ToString());
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<Kindergarten>();
+                    readTask.Wait();
+
+                    rec = readTask.Result;
+                }
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(rec);
         }
 
         // GET: Kindergarten/DeleteKindergarten/5
-       
-            public ActionResult DeleteKindergarten(int id)
+
+        public ActionResult DeleteKindergarten(int id)
             {
                 using (var client = new HttpClient())
                 {
