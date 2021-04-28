@@ -46,13 +46,26 @@ namespace kindergarten_Front.Controllers
 
         // POST: Child/Create
         [HttpPost]
-        public async Task<ActionResult> Create(Child child , MultipartFileStreamProvider file)
+        public async Task<ActionResult> Create(Child child , HttpPostedFileBase myfile)
         {
+            var n = System.Guid.NewGuid().ToString() + "_" + myfile.FileName;
+            myfile.SaveAs("C:/Users/Med Yosri/source/repos/kindergartenFront/kindergarten-Front/Content/Upload/" + n);
+            byte[] file = System.IO.File.ReadAllBytes("C:/Users/Med Yosri/source/repos/kindergartenFront/kindergarten-Front/Content/Upload/" + n);
+            MultipartFormDataContent form = new MultipartFormDataContent();
+            form.Add(new ByteArrayContent(file, 0, myfile.ContentLength), "file", "file");
+            form.Add(new StringContent("20"), "idUser");
+            form.Add(new StringContent("1"), "idkinder");
+            form.Add(new StringContent(child.name), "name");
+            form.Add(new StringContent(Convert.ToString(child.dateOfBirth)), "date");
+
             if (ModelState.IsValid)
+
             {
-                var APIResponse = await httpClient.PostAsJsonAsync<Child>(baseAddress + 
-                    "ajouterChild?idUser=7&idkinder=1&date="+child.dateOfBirth+"&name="
-                    +child.name+"&photo="+file.FileData, child);
+                //var APIResponse = await httpClient.PostAsJsonAsync<Child>(baseAddress + 
+                //    "ajouterChild?idUser=7&idkinder=1&date="+child.dateOfBirth+"&name="
+                //    +child.name+"&photo="+file.FileData, child);
+                ////.ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode()); ///
+                var APIResponse = await httpClient.PostAsync(baseAddress + "AddChild", form);
                 //.ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
                 return RedirectToAction("Index");
             }
@@ -101,5 +114,30 @@ namespace kindergarten_Front.Controllers
             return View(c);
 
         }
+
+
+        // GET: Bill/Edit/
+        public async Task<ActionResult> Edit(int id)
+        {
+            var response = await httpClient.GetAsync(baseAddress + "child/" + id);
+            var pub = await response.Content.ReadAsAsync<Child>();
+            return View(pub);
+        }
+
+
+
+        [HttpPost]
+        public async Task<ActionResult> Edit(int id, Child c)
+        {
+            if (ModelState.IsValid)
+            {
+                var APIResponse = await httpClient.PutAsJsonAsync<Child>(baseAddress + "updateChild/" + id, c);
+
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
     }
+    
 }
