@@ -163,87 +163,75 @@
         <i class=" d-none d-sm-inline-block btn btn-warning  shadow-sm">
             @Html.ActionLink("Imprimer", "imprimerforuser")
         </i>
-        </p>
-        <br>
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.description)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.dateOfBill)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.totalPrice)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.user)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.kindergarten)
-                </th>
-                <th></th>
-            </tr>
+    </p>
+    <br>
 
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.dateOfBill)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.totalPrice)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.user.firstName)  @Html.DisplayFor(modelItem => item.user.lastName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.kindergarten.name)
-                    </td>
-                    <td>
 
-                        <i class=" d-none d-sm-inline-block btn btn-outline-secondary  shadow-sm">
-                            @Html.ActionLink("Details", "Details1", new { id = item.id })
-                        </i>
 
-                    </td>
-                </tr>
-            }
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-12 col-md-12 col-lg-4" style="margin-left:500px">
+            <div class="rs-class-box mb-5">
+                <div class="body-box">
+                    <div class="class-name">
+                        <div class="title"> @Html.DisplayFor(modelItem => item.description)</div>
+                    </div>
+                    <br />
+                    <br />
+                    <p>@Html.DisplayNameFor(model => model.description) : @Html.DisplayFor(modelItem => item.description)</p>
+                    <p>  @Html.DisplayNameFor(model => model.dateOfBill) : @Html.DisplayFor(modelItem => item.dateOfBill)</p>
+                    <p> @Html.DisplayNameFor(model => model.totalPrice) : @Html.DisplayFor(modelItem => item.totalPrice)</p>
+                    <p>@Html.DisplayNameFor(model => model.user) : @Html.DisplayFor(modelItem => item.user.firstName)  @Html.DisplayFor(modelItem => item.user.lastName)</p>
+                    <p>  @Html.DisplayNameFor(model => model.kindergarten) : @Html.DisplayFor(modelItem => item.kindergarten.name)</p>
+                    <div class="detail">
+                        <div class="age col">
+                            <h4>
+                                <i class=" d-none d-sm-inline-block btn btn-outline-secondary  shadow-sm">
+                                    @Html.ActionLink("Details", "Details1", new { id = item.id })
+                                </i>
+                            </h4>
+                        </div>
 
-        </table>
-        <div class="section bg-tertiary">
-            <div class="content-wrap py-5">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-sm-12 col-md-12">
-                            <div class="cta-1">
-                                <div class="body-text mb-3">
-                                    <h3 class="my-1 text-secondary">Let's join the best kindergarten now!</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                                </div>
-                                <div class="body-action">
-                                    <a href="contact.html" class="btn btn-primary mt-3">CONTACT US</a>
-                                </div>
+        
+
+    }
+
+
+    <div class="section bg-tertiary">
+        <div class="content-wrap py-5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="cta-1">
+                            <div class="body-text mb-3">
+                                <h3 class="my-1 text-secondary">Let's join the best kindergarten now!</h3>
+
+                            </div>
+                            <div class="body-action">
+                                <a href="contact.html" class="btn btn-primary mt-3">CONTACT US</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- FOOTER SECTION -->
-        <div class="footer" data-background="~/Content/kids/images/bg.jpg">
-            <div class="content-wrap">
-                <div class="container">
+    </div>
+    <!-- FOOTER SECTION -->
+    <div class="footer" data-background="~/Content/kids/images/bg.jpg">
+        <div class="content-wrap">
+            <div class="container">
 
-                    <div class="row">
-                        <div class="col-sm-3 col-md-3">
-                            <div class="footer-item">
-                                <img src="~/Content/kids/images/logo.png" alt="logo bottom" class="logo-bottom">
-                                <div class="spacer-30"></div>
-<p>
+                <div class="row">
+                    <div class="col-sm-3 col-md-3">
+                        <div class="footer-item">
+                            <img src="~/Content/kids/images/logo.png" alt="logo bottom" class="logo-bottom">
+                            <div class="spacer-30"></div>
+                            <p>
                                 CHILDHOOD is a web site to  facilitate the communication between
                                 parents and the administrative staff in such establishments which is particularly important.
                             </p>

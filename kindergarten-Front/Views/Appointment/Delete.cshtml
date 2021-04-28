@@ -107,10 +107,10 @@
                                 <a class="nav-link" href="about.html">ABOUT US</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="classes.html">CLASSES</a>
+                                <a class="nav-link" href="~/Bill/Indexuser">Bill</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="teachers.html">TEACHERS</a>
+                                <a class="nav-link" href="/Appointment/Index">Appointment</a>
                             </li>
                             <li class="nav-item dropdown dmenu active">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -163,53 +163,43 @@
     <div>
 
         <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.date) : @Html.DisplayFor(model => model.date)
-            </dt>
+         <div class="col-sm-12 col-md-12 col-lg-4" style="margin-left:500px">
+            <div class="rs-class-box mb-5">
+                <div class="body-box">
+                    <div class="class-name">
+                        <div class="title"> @Html.DisplayFor(modelItem => modelItem.description)</div>
+                    </div>
+                    <br />
+                    <br />
+                    <p>@Html.DisplayNameFor(model => model.date) :@Html.DisplayFor(modelItem => modelItem.date)</p>
+                    <p>  @Html.DisplayNameFor(model => model.description) : @Html.DisplayFor(modelItem => modelItem.description)</p>
+                    <p> @Html.DisplayNameFor(model => model.status) :  @Html.DisplayFor(modelItem => modelItem.status)</p>
+                    <p>  @Html.DisplayNameFor(model => model.beginhour) :  @Html.DisplayFor(modelItem => modelItem.beginhour)</p>
+                    <p> @Html.DisplayNameFor(model => model.endhour) : @Html.DisplayFor(modelItem => modelItem.endhour)</p>
+                    <p>@Html.DisplayNameFor(model => model.user) : @Html.DisplayFor(modelItem => modelItem.user.firstName)  @Html.DisplayFor(modelItem => modelItem.user.lastName)</p>
+                    <p>  @Html.DisplayNameFor(model => model.doctor) :  @Html.DisplayFor(modelItem => modelItem.doctor.firstName)  @Html.DisplayFor(modelItem => modelItem.doctor.lastName)</p>
+                    <div class="detail">
+                        <div class="age col">
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
 
+                                <div class="form-actions no-color">
+                                    <input type="submit" value="Delete" class=" d-none d-sm-inline-block btn btn-outline-secondary  shadow-sm" /> 
+                                    <i class=" d-none d-sm-inline-block btn btn-outline-secondary  shadow-sm">
+                                        @Html.ActionLink("Back to List", "Index")
+                                        </i>
+</div>
+                            }
+                        </div>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.description) : @Html.DisplayFor(model => model.description)
-            </dt>
-
-
-            <dt>
-                @Html.DisplayNameFor(model => model.status) :  @Html.DisplayFor(model => model.status)
-            </dt>
-
-
-            <dt>
-                @Html.DisplayNameFor(model => model.beginhour) :  @Html.DisplayFor(model => model.beginhour)
-            </dt>
-
-
-            <dt>
-                @Html.DisplayNameFor(model => model.endhour) :  @Html.DisplayFor(model => model.endhour)
-            </dt>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.user) :  @Html.DisplayFor(model => model.user.firstName) @Html.DisplayFor(model => model.user.lastName)
-            </dt>
-
-
-            <dt>
-                @Html.DisplayNameFor(model => model.doctor) : @Html.DisplayFor(model => model.doctor.firstName) @Html.DisplayFor(model => model.doctor.lastName)
-            </dt>
-
-
-
-        </dl>
-
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
-
-            <div class="form-actions no-color">
-                <input type="submit" value="Delete" class="d-none d-sm-inline-block btn btn-warning  shadow-smt" /> |
-                @Html.ActionLink("Back to List", "Index")
+                    </div>
+                </div>
             </div>
-        }
+        </div>
+
+
+       
     </div>
     <br>
     <div class="section bg-tertiary">

@@ -156,77 +156,54 @@
     </div>
 
     <br>
-  
+
     <p>
         <i class=" d-none d-sm-inline-block btn btn-warning  shadow-sm">
             @Html.ActionLink("Create New", "Create")
         </i>
     </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.beginhour)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.endhour)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.user)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.doctor)
-            </th>
-            <th></th>
-        </tr>
 
-        @foreach (var item in Model)
-        {
-            <tr >
-                <td>
-                    @Html.DisplayFor(modelItem => item.date)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.status)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.beginhour)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.endhour)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.user.firstName)  @Html.DisplayFor(modelItem => item.user.lastName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.doctor.firstName)  @Html.DisplayFor(modelItem => item.doctor.lastName)
-                </td>
-                <td>
-                    <i class=" d-none d-sm-inline-block btn btn-outline-success  shadow-sm">
-                        @Html.ActionLink("Edit", "Edit", new { id = item.id, idj = item.user.id })
-                    </i>
-                    <i class=" d-none d-sm-inline-block btn btn-outline-secondary  shadow-sm">
-                        @Html.ActionLink("Details", "Details", new { id = item.id })
-                    </i>
-                    <i class=" d-none d-sm-inline-block btn btn-outline-danger  shadow-sm">
-                        @Html.ActionLink("Delete", "Delete", new { id = item.id, idu = item.user.id })
-                    </i>
-                </td>
-            </tr>
-        }
 
-    </table>
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-12 col-md-12 col-lg-4" style="margin-left:500px" >
+            <div class="rs-class-box mb-5">
+                <div class="body-box">
+                    <div class="class-name">
+                        <div class="title" > @Html.DisplayFor(modelItem => item.description)</div>
+                    </div>
+                    <br />
+                    <br />
+                    <p>@Html.DisplayNameFor(model => model.date) :@Html.DisplayFor(modelItem => item.date)</p>
+                    <p>  @Html.DisplayNameFor(model => model.description) : @Html.DisplayFor(modelItem => item.description)</p>
+                    <p> @Html.DisplayNameFor(model => model.status) :  @Html.DisplayFor(modelItem => item.status)</p>
+                    <p>  @Html.DisplayNameFor(model => model.beginhour) :  @Html.DisplayFor(modelItem => item.beginhour)</p>
+                    <p> @Html.DisplayNameFor(model => model.endhour) : @Html.DisplayFor(modelItem => item.endhour)</p>
+                    <p>@Html.DisplayNameFor(model => model.user) : @Html.DisplayFor(modelItem => item.user.firstName)  @Html.DisplayFor(modelItem => item.user.lastName)</p>
+                    <p>  @Html.DisplayNameFor(model => model.doctor) :  @Html.DisplayFor(modelItem => item.doctor.firstName)  @Html.DisplayFor(modelItem => item.doctor.lastName)</p>
+                    <div class="detail">
+                        <div class="age col">
+                            <h5>
+                                <i class=" d-none d-sm-inline-block btn btn-outline-success  shadow-sm">
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.id, idj = item.user.id })
+                                </i>
+                                <i class=" d-none d-sm-inline-block btn btn-outline-secondary  shadow-sm">
+                                    @Html.ActionLink("Details", "Details", new { id = item.id })
+                                </i>
+                                <i class=" d-none d-sm-inline-block btn btn-outline-danger  shadow-sm">
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.id, idu = item.user.id })
+                                </i>
+                            </h5>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+
+
     <div class="section bg-tertiary">
         <div class="content-wrap py-5">
             <div class="container">
