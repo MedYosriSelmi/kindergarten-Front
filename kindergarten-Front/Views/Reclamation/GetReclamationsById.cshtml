@@ -132,7 +132,7 @@
                                 </a>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="https://localhost:44365/Reclamation/GetReclamationsById">Reclamations</a>
-                                    <a class="dropdown-item" href="https://localhost:44365/FileUpload/Index">Add Reclamation</a>
+                                    <a class="dropdown-item" href="https://localhost:44365/FileUpload/Index">Apply Reclamation</a>
                                 </div>
                             </li>
                             <li class="nav-item">
@@ -151,13 +151,11 @@
     <div class="section banner-page" data-background="~/Content/kids/images/banner-single.jpg">
         <div class="content-wrap pos-relative">
             <div class="d-flex justify-content-center bd-highlight mb-3">
-                <div class="title-page">Events</div>
+                <div class="title-page">Your Reclamations</div>
             </div>
             <div class="d-flex justify-content-center bd-highlight mb-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb ">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">appointments</li>
                     </ol>
                 </nav>
             </div>
@@ -165,11 +163,13 @@
     </div>
 
     <br>
-    <p>
-        <i class=" d-none d-sm-inline-block btn btn-warning  shadow-sm">
-            @Html.ActionLink("Create New", "Create")
-        </i>
-    </p>
+
+    @using (Html.BeginForm("findByDate", "Reclamation", FormMethod.Get))
+    {
+        @Html.TextBox("date")
+        <input type="submit" value="Search" class=" d-none d-sm-inline-block btn btn-success shadow-sm"  />
+    }
+
     <table class="table">
         <tr>
         <tr>
@@ -202,17 +202,21 @@
                     @Html.DisplayFor(modelItem => item.type)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.photo)
+                    <img src="~/Media/@Html.DisplayFor(model => item.photo)" style="height:100px;width:100px;" />
                 </td>
+
                 <td>
-                    <i class=" d-none d-sm-inline-block btn btn-toolbar  shadow-sm">
+                    <i class=" d-none d-sm-inline-block btn btn-warning  shadow-sm ">
                         @Html.ActionLink("Edit", "Edit", new { id = item.id })
                     </i>
-                    <i class=" d-none d-sm-inline-block btn btn-toolbar  shadow-sm">
+                    <i class="d-none d-sm-inline-block btn btn-warning  shadow-sm">
                         @Html.ActionLink("Details", "Details", new { id = item.id })
                     </i>
-                    <i class=" d-none d-sm-inline-block btn btn-toolbar  shadow-sm">
+                    <i class=" d-none d-sm-inline-block btn btn-warning  shadow-sm ">
                         @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                    </i>
+                    <i class=" d-none d-sm-inline-block btn btn-warning shadow-sm">
+                        @Html.ActionLink("Check", "CheckStatus", new { id = item.id })
                     </i>
                 </td>
 

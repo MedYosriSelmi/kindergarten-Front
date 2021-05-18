@@ -253,7 +253,7 @@
                                 });
                             });
                         </script>
-                        <input class="form-control" id="myInput" type="text" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
+                       
                         <br>
 
                     </form>
@@ -416,7 +416,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Mondher</span>
                                 <img class="img-profile rounded-circle"
                                      src="img/undraw_profile.svg">
                             </a>
@@ -453,21 +453,8 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="~/Bill/imprimer" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                            <i class="fas fa-download fa-sm text-white-50"></i> imprimer
-                        </a>
+                       
                     </div>
-
-                    <h2>List of Reclamations</h2>
-
-                    <p>
-                        <a href="~/Bill/CreateBill" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                            <i></i> Create New
-
-
-                        </a>
-
-                    </p>
 
                     <table class="table">
                         <tr>
@@ -494,31 +481,34 @@
 
                         @foreach (var item in Model)
                         {
-                    <tr id="souhaib">
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DateOfReclam)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.description)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.status)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.type)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.photo)
-                        </td>
-                        <td>
-                            <p>
-                                <i class=" d-none d-sm-inline-block btn btn-success shadow-sm">
-                                    @Html.ActionLink("Details", "Details", new { id = item.id })
-                                </i>
-                            </p>
-                        </td>
-                    </tr>
+                            <tr id="souhaib">
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DateOfReclam)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.description)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.status)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.type)
+                                </td>
+                                <td>
+                                    <img src="~/Media/@Html.DisplayFor(modelItem => item.photo)" style="height:100px;width:100px;" />
+                                </td>
+                                <td>
+                                    <p>
+                                        <i class=" d-none d-sm-inline-block btn btn-success shadow-sm">
+                                            @Html.ActionLink("Details", "Details", new { id = item.id })
+                                        </i>
+                                    </p>
+                                </td>
+                            </tr>
                         }
+                        <div>
+                            @Html.ActionLink("Back to List", "Index")
+                        </div>
 
                     </table>
                 </div>

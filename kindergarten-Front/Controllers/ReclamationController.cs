@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 
@@ -88,6 +89,21 @@ namespace kindergarten_Front.Controllers
             }
 
             return View(rec);
+        }
+
+        public ActionResult CheckStatus(int id)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:8081/");
+                var postJob = client.PostAsJsonAsync<MailMessage>("/SpringMVC/servlet/checkReclamationStatus/2/" + id.ToString(), null);
+                postJob.Wait();
+                var postResult = postJob.Result;
+                DateTime dateCreation = DateTime.Now;
+                if (postResult.IsSuccessStatusCode)
+                    return RedirectToAction("GetReclamationsById");
+            }
+            return View("GetReclamationsById");
         }
 
         // GET: Reclamation/Create
@@ -203,5 +219,33 @@ namespace kindergarten_Front.Controllers
             }
 
         }
+
+        public ActionResult findByDate(string date)
+        {
+            IEnumerable<Reclamation> reclamation = null;
+            using (var reclam = new HttpClient())
+            {
+                reclam.BaseAddress = new Uri("http://localhost:8081/");
+                var responseTask = reclam.GetAsync("/SpringMVC/servlet/searchReclamationByDate/" + date.ToString());
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readJob = result.Content.ReadAsAsync<IList<Reclamation>>();
+                    readJob.Wait();
+                    reclamation = readJob.Result;
+                }
+                else
+                {
+                    //return the error
+                    reclamation = Enumerable.Empty<Reclamation>();
+                    ModelState.AddModelError(String.Empty, "error");
+                }
+
+            }
+            return View(reclamation);
+        }
     }
+
 }
+

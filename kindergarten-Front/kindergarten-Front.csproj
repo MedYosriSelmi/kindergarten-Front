@@ -2129,6 +2129,7 @@
     <Content Include="Views\FileUpload\Index.cshtml" />
     <Content Include="Views\Reclamation\Edit.cshtml" />
     <Content Include="Views\Reclamation\Details.cshtml" />
+    <Content Include="Views\Reclamation\findByDate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
